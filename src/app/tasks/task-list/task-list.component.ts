@@ -10,4 +10,11 @@ export class TaskListComponent  {
     {id: 1, title: 'Task 1', done: false},
     {id: 2, title: 'Task 2', done: true}
   ];
+
+  addTask(title: string) {
+    this.tasks.push({
+      id: 1,
+      title, done: false
+    });
+  }
 }

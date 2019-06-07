@@ -1,2 +1,3 @@
-<input type="checkbox" [checked]="task.done">
+<app-checkbox [checked]="task.done"
+              (outCheck)="task.done = $event"></app-checkbox>
 <div>{{task.title}}</div>

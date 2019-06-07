@@ -1,4 +1,4 @@
-import {Component, Input, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-task',
@@ -9,4 +9,8 @@ import {Component, Input, ViewEncapsulation} from '@angular/core';
 export class TaskComponent {
   @Input() task: any;
 
+  @HostBinding('class.done')
+  get done() {
+    return this.task && this.task.done;
+  }
 }
