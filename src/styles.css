@@ -713,25 +713,29 @@ p {
 
 /* Chartist styles end */
 
-mac-root {
+
+app-root {
   display: flex;
   height: 100%
 }
 
-mac-root .side-nav {
+
+app-root .side-nav {
   height: 100%;
   flex-basis: 300px;
   flex-shrink: 0;
   background-color: #302f2b
 }
 
-mac-root .main {
+
+app-root .main {
   flex: auto;
   height: 100%;
   overflow-y: auto;
 }
 
-mac-user-area {
+
+app-user-area {
   display: flex;
   align-items: center;
   background-color: #3699cb;
@@ -739,32 +743,38 @@ mac-user-area {
   color: #fff
 }
 
-mac-user-area .profile {
+
+app-user-area .profile {
   display: block;
   width: 70px;
   height: 70px;
   flex-shrink: 0
 }
 
-mac-user-area .information {
+
+app-user-area .information {
   margin-left: 30px
 }
 
-mac-user-area .welcome-text {
+
+app-user-area .welcome-text {
   font-size: 20px;
   font-weight: 500
 }
 
-mac-project {
+
+app-project {
   display: block
 }
 
-mac-project .header {
+
+app-project .header {
   padding: 50px;
   background-color: #fff;
 }
 
-mac-project .title {
+
+app-project .title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 36px;
@@ -772,12 +782,14 @@ mac-project .title {
   font-weight: 400
 }
 
-mac-task-list-container {
+
+app-task-list-container {
   display: block;
   width: 100%;
 }
 
-mac-task-list {
+
+app-task-list {
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -785,44 +797,52 @@ mac-task-list {
   padding: 50px;
 }
 
-mac-task-list .tasks {
+
+app-task-list .tasks {
   width: 100%;
   margin-top: 50px;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2)
 }
 
-mac-task-list .l-container {
+
+app-task-list .l-container {
   display: flex;
   flex-wrap: wrap
 }
 
-mac-task-list .l-box-a {
+
+app-task-list .l-box-a {
   flex-grow: 1
 }
 
-mac-task-list .l-box-b {
+
+app-task-list .l-box-b {
   flex-grow: 2
 }
 
-mac-task-list .l-box-c {
+
+app-task-list .l-box-c {
   margin-top: 50px;
   flex-basis: 100%;
   flex-shrink: 0
 }
 
-mac-enter-task {
+
+app-enter-task {
   display: flex;
   align-items: center;
   flex: auto;
   margin-left: 20px;
 }
 
-mac-enter-task .button {
+
+app-enter-task .button {
   flex-grow: 0
 }
 
-mac-enter-task .title-input {
+
+app-enter-task .title-input {
   display: block;
   flex-grow: 1;
   margin-right: 20px;
@@ -834,7 +854,8 @@ mac-enter-task .title-input {
   font-weight: 500;
 }
 
-mac-task {
+
+app-task {
   display: flex;
   position: relative;
   align-items: flex-start;
@@ -842,11 +863,13 @@ mac-task {
   border-bottom: 3px solid rgba(0, 0, 0, .06);
 }
 
-mac-task:last-child {
+
+app-task:last-child {
   border-bottom-color: transparent
 }
 
-mac-task .content {
+
+app-task .content {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -854,11 +877,14 @@ mac-task .content {
   padding: 10px 0;
 }
 
-mac-task.done, mac-task.done .infos {
+
+app-task.done,
+app-task.done .infos {
   color: #bbb
 }
 
-mac-task .title {
+
+app-task .title {
   width: calc(100% - 110px);
   font-size: 20px;
   line-height: 1.1;
@@ -866,7 +892,8 @@ mac-task .title {
   margin-bottom: 0;
 }
 
-mac-task .delete {
+
+app-task .delete {
   display: flex;
   background: transparent;
   border: none;
@@ -882,7 +909,8 @@ mac-task .delete {
   color: #ff5967
 }
 
-mac-task .delete:before {
+
+app-task .delete:before {
   content: "✕";
   font-family: entypo, sans-serif;
   display: block;
@@ -892,12 +920,14 @@ mac-task .delete:before {
   line-height: 1;
 }
 
-mac-task:hover .delete {
+
+app-task:hover .delete {
   opacity: 1;
   transform: scale(1)
 }
 
-mac-task .details {
+
+app-task .details {
   margin-right: 20px;
 }
 
@@ -929,7 +959,8 @@ mac-task .details {
   font-weight: 900;
 }
 
-mac-checkbox {
+
+app-checkbox {
   display: flex;
   align-items: center;
   padding: 20px;
@@ -939,7 +970,8 @@ mac-checkbox {
   margin-right: 20px;
 }
 
-mac-checkbox:before {
+
+app-checkbox:before {
   content: "";
   display: block;
   position: absolute;
@@ -949,13 +981,15 @@ mac-checkbox:before {
   border: 2px solid rgba(0, 0, 0, .24)
 }
 
-mac-checkbox .label {
+
+app-checkbox .label {
   display: block;
   position: relative;
   cursor: pointer
 }
 
-mac-checkbox .input {
+
+app-checkbox .input {
   display: block;
   opacity: 0;
   appearance: none;
@@ -963,12 +997,14 @@ mac-checkbox .input {
   height: 20px;
 }
 
-mac-checkbox .text {
+
+app-checkbox .text {
   display: block;
   margin-left: 30px;
 }
 
-mac-checkbox .text:before {
+
+app-checkbox .text:before {
   content: "✓";
   font-family: entypo, sans-serif;
   display: block;
@@ -981,16 +1017,19 @@ mac-checkbox .text:before {
   transform: scale(.5)
 }
 
-mac-checkbox .input:checked + .text:before {
+
+app-checkbox .input:checked + .text:before {
   color: #68be60;
   transform: scale(1)
 }
 
-mac-toggle {
+
+app-toggle {
   display: flex;
 }
 
-mac-toggle .toggle-button {
+
+app-toggle .toggle-button {
   display: inline-block;
   padding: 10px 20px;
   border: none;
@@ -1002,21 +1041,25 @@ mac-toggle .toggle-button {
   text-decoration: none;
 }
 
-mac-toggle .toggle-button:hover {
+
+app-toggle .toggle-button:hover {
   background-color: #4a4a4a;
   color: hsla(0, 0%, 100%, .75)
 }
 
-mac-toggle .toggle-button.active {
+
+app-toggle .toggle-button.active {
   background-color: #f3cd2c !important;
   color: #fff !important
 }
 
-mac-tabs {
+
+app-tabs {
   display: block;
 }
 
-mac-tabs .tab-list {
+
+app-tabs .tab-list {
   display: flex;
   flex-shrink: 0;
   list-style: none;
@@ -1026,11 +1069,13 @@ mac-tabs .tab-list {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .18);
 }
 
-mac-tabs .tab-list-item {
+
+app-tabs .tab-list-item {
   display: block;
 }
 
-mac-tabs .tab-button {
+
+app-tabs .tab-button {
   display: block;
   margin-right: 33px;
   padding: 10px 0;
@@ -1045,26 +1090,31 @@ mac-tabs .tab-button {
   transition: all .3s ease;
 }
 
-mac-tabs .tab-button:hover {
+
+app-tabs .tab-button:hover {
   color: #000;
 }
 
-mac-tabs .tab-button-active {
+
+app-tabs .tab-button-active {
   border-bottom: 3px solid #f3cd2c;
   color: #000;
 }
 
-mac-navigation {
+
+app-navigation {
   display: block;
 }
 
-mac-navigation-section {
+
+app-navigation-section {
   display: block;
   padding: 35px 30px 30px;
   border-top: 3px solid rgba(0, 0, 0, .1)
 }
 
-mac-navigation-section .title {
+
+app-navigation-section .title {
   color: hsla(0, 0%, 100%, .23);
   font-size: 20px;
   line-height: 1;
@@ -1072,13 +1122,15 @@ mac-navigation-section .title {
   margin-bottom: 15px;
 }
 
-mac-navigation-section .item-list {
+
+app-navigation-section .item-list {
   margin: 0;
   padding: 0;
   list-style: none
 }
 
-mac-navigation-item {
+
+app-navigation-item {
   display: block;
   margin-right: -30px;
   margin-left: -30px;
@@ -1092,21 +1144,25 @@ mac-navigation-item {
   cursor: pointer;
 }
 
-mac-navigation-item:hover {
+
+app-navigation-item:hover {
   color: hsla(0, 0%, 100%, .9)
 }
 
-mac-navigation-item:focus {
+
+app-navigation-item:focus {
   outline: none;
 }
 
-mac-navigation-item.active {
+
+app-navigation-item.active {
   border-left: 3px solid #f3cd2c;
   background-color: rgba(0, 0, 0, .5);
   color: hsla(0, 0%, 100%, .9)
 }
 
-mac-editor {
+
+app-editor {
   display: flex;
   align-items: center;
   width: 100%;
@@ -1114,31 +1170,37 @@ mac-editor {
   min-height: 50px
 }
 
-mac-editor .editable-content {
+
+app-editor .editable-content {
   display: none;
   min-height: 1em;
   word-break: break-word;
 }
 
-mac-editor .editable-content:empty {
+
+app-editor .editable-content:empty {
   width: 100%;
   min-width: 50px;
 }
 
-mac-editor .editable-content:focus {
+
+app-editor .editable-content:focus {
   outline: none;
 }
 
-mac-editor output {
+
+app-editor output {
   word-break: break-word;
 }
 
-mac-editor .controls {
+
+app-editor .controls {
   display: flex;
   margin: 0 10px
 }
 
-mac-editor .icon-edit {
+
+app-editor .icon-edit {
   background: transparent;
   border: none;
   padding: 0;
@@ -1154,7 +1216,8 @@ mac-editor .icon-edit {
   color: #3699cb
 }
 
-mac-editor .icon-edit:before {
+
+app-editor .icon-edit:before {
   content: "✎";
   font-family: entypo, sans-serif;
   text-decoration-skip: all;
@@ -1165,7 +1228,8 @@ mac-editor .icon-edit:before {
   line-height: 1;
 }
 
-mac-editor .icon-save {
+
+app-editor .icon-save {
   display: flex;
   background: transparent;
   border: none;
@@ -1181,7 +1245,8 @@ mac-editor .icon-save {
   color: #68be60;
 }
 
-mac-editor .icon-save:before {
+
+app-editor .icon-save:before {
   content: "✓";
   font-family: entypo, sans-serif;
   text-decoration-skip: all;
@@ -1192,7 +1257,8 @@ mac-editor .icon-save:before {
   line-height: 1;
 }
 
-mac-editor .icon-cancel {
+
+app-editor .icon-cancel {
   display: flex;
   background: transparent;
   border: none;
@@ -1208,7 +1274,8 @@ mac-editor .icon-cancel {
   color: #ff5967;
 }
 
-mac-editor .icon-cancel:before {
+
+app-editor .icon-cancel:before {
   content: "🚫";
   font-family: entypo, sans-serif;
   text-decoration-skip: all;
@@ -1219,31 +1286,38 @@ mac-editor .icon-cancel:before {
   line-height: 1;
 }
 
-mac-editor:hover .icon-edit {
+
+app-editor:hover .icon-edit {
   opacity: 1;
   -webkit-transform: scale(1);
   transform: scale(1)
 }
 
-mac-editor.edit-mode .editable-content {
+
+app-editor.edit-mode .editable-content {
   display: block;
 }
 
-mac-editor.edit-mode .output {
+
+app-editor.edit-mode .output {
   display: none;
 }
 
-mac-editor.edit-mode .icon-cancel, mac-editor.edit-mode .icon-save {
+
+app-editor.edit-mode .icon-cancel,
+app-editor.edit-mode .icon-save {
   opacity: 1;
   transform: scale(1)
 }
 
-mac-comments {
+
+app-comments {
   display: block;
   padding: 50px;
 }
 
-mac-comments .title {
+
+app-comments .title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
@@ -1251,13 +1325,15 @@ mac-comments .title {
   font-weight: 500
 }
 
-mac-comments .add-comment-section {
+
+app-comments .add-comment-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end
 }
 
-mac-comments .add-comment-box {
+
+app-comments .add-comment-box {
   display: flex;
   position: relative;
   width: 100%;
@@ -1269,19 +1345,22 @@ mac-comments .add-comment-box {
   background-color: #fff
 }
 
-mac-comments .comments-list {
+
+app-comments .comments-list {
   list-style: none;
   padding: 0;
   margin: 0
 }
 
-mac-comment {
+
+app-comment {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
 }
 
-mac-comment .meta {
+
+app-comment .meta {
   display: flex;
   flex: 0 0 100px;
   flex-direction: column;
@@ -1290,22 +1369,26 @@ mac-comment .meta {
 }
 
 
-mac-comment .user-name {
+
+app-comment .user-name {
   font-weight: 400;
 }
 
-mac-comment .time {
+
+app-comment .time {
   font-size: 14px;
 }
 
-mac-comment .user-picture {
+
+app-comment .user-picture {
   border-radius: 50%;
   overflow: hidden;
   width: 70px;
   height: 70px;
 }
 
-mac-comment .main {
+
+app-comment .main {
   display: flex;
   flex: auto;
   flex-wrap: wrap;
@@ -1313,7 +1396,8 @@ mac-comment .main {
   margin-left: 30px;
 }
 
-mac-comment .content {
+
+app-comment .content {
   display: flex;
   position: relative;
   width: 100%;
@@ -1325,7 +1409,8 @@ mac-comment .content {
   background-color: #fff;
 }
 
-mac-comment .content:before {
+
+app-comment .content:before {
   content: "";
   display: block;
   position: absolute;
@@ -1337,21 +1422,25 @@ mac-comment .content:before {
   border-right: 25px solid #fff;
 }
 
-mac-activities {
+
+app-activities {
   display: block;
   padding: 50px;
 }
 
-mac-activities .l-container {
+
+app-activities .l-container {
   margin-top: 50px
 }
 
-mac-activity {
+
+app-activity {
   display: block;
   position: relative
 }
 
-mac-activity:before {
+
+app-activity:before {
   content: "";
   display: block;
   position: absolute;
@@ -1363,30 +1452,35 @@ mac-activity:before {
   transform: translate(-50%)
 }
 
-mac-activity .info {
+
+app-activity .info {
   position: relative;
   width: 50%;
   text-align: right;
   padding: 40px 80px 40px 0
 }
 
-mac-activity .info-align-right {
+
+app-activity .info-align-right {
   left: 50%;
   text-align: left;
   padding: 40px 0 40px 80px
 }
 
-mac-activity .title {
+
+app-activity .title {
   margin-bottom: 0
 }
 
-mac-activity .author {
+
+app-activity .author {
   font-size: 14px;
   color: #bbb;
   margin-top: 0
 }
 
-mac-activity .user-image {
+
+app-activity .user-image {
   display: block;
   position: absolute;
   left: 50%;
@@ -1399,7 +1493,9 @@ mac-activity .user-image {
   transform: translate(-50%, -50%)
 }
 
-mac-activity.end-mark:after, mac-activity.start-mark:after {
+
+app-activity.end-mark:after,
+app-activity.start-mark:after {
   content: "";
   display: block;
   position: absolute;
@@ -1410,17 +1506,20 @@ mac-activity.end-mark:after, mac-activity.start-mark:after {
   border-radius: 50%
 }
 
-mac-activity.end-mark:after {
+
+app-activity.end-mark:after {
   bottom: 0;
   transform: translate(-50%, 50%)
 }
 
-mac-activity.start-mark:after {
+
+app-activity.start-mark:after {
   top: 0;
   transform: translate(-50%, -50%)
 }
 
-mac-tags-select {
+
+app-tags-select {
   display: block;
   position: fixed;
   z-index: 1;
@@ -1430,7 +1529,8 @@ mac-tags-select {
   font-size: 18px;
 }
 
-mac-tags-select:before {
+
+app-tags-select:before {
   content: "";
   display: block;
   position: absolute;
@@ -1443,13 +1543,15 @@ mac-tags-select:before {
   border-top: 10px solid #3699cb
 }
 
-mac-tags-select .list {
+
+app-tags-select .list {
   padding: 0;
   margin: 0;
   list-style: none
 }
 
-mac-tags-select .item {
+
+app-tags-select .item {
   color: hsla(0, 0%, 100%, .8);
   cursor: pointer;
   transition: all .3s ease;
@@ -1457,7 +1559,8 @@ mac-tags-select .item {
   font-weight: 400
 }
 
-mac-tags-select .item:hover {
+
+app-tags-select .item:hover {
   color: #fff
 }
 
@@ -1487,17 +1590,20 @@ mac-tags-select .item:hover {
   }
 }
 
-[macDraggable] {
+
+[appDraggable] {
   cursor: move;
   transition: all 0.3s;
 }
 
-[macDraggable].dragging {
+
+[appDraggable].dragging {
   opacity: .2;
   filter: grayscale(100%)
 }
 
-[macDraggableDropZone].over {
+
+[appDraggableDropZone].over {
   outline: 2px solid #bbb;
   animation: drop-glow .5s infinite;
   animation-direction: alternate;
@@ -1505,12 +1611,14 @@ mac-tags-select .item:hover {
   filter: grayscale(100%)
 }
 
-mac-task-details {
+
+app-task-details {
   display: block;
   padding: 50px;
 }
 
-mac-task-details .title {
+
+app-task-details .title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
@@ -1518,7 +1626,8 @@ mac-task-details .title {
   font-weight: 500;
 }
 
-mac-task-details .content {
+
+app-task-details .content {
   display: flex;
   flex-wrap: wrap;
   padding: 30px;
@@ -1526,7 +1635,8 @@ mac-task-details .content {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
 }
 
-mac-task-details .label {
+
+app-task-details .label {
   width: 100%;
   margin-top: 20px;
   text-transform: uppercase;
@@ -1535,17 +1645,20 @@ mac-task-details .label {
   font-size: 14px;
 }
 
-mac-duration {
+
+app-duration {
   min-width: 130px;
 }
 
-mac-efforts {
+
+app-efforts {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
-mac-efforts .label {
+
+app-efforts .label {
   margin-right: 10px;
   width: auto;
   margin-top: 0;
@@ -1554,20 +1667,24 @@ mac-efforts .label {
   font-weight: 300;
 }
 
-mac-efforts-timeline {
+
+app-efforts-timeline {
   display: block;
   width: 100%
 }
 
-mac-efforts-timeline .remaining {
+
+app-efforts-timeline .remaining {
   fill: #d9d9d9
 }
 
-mac-efforts-timeline .done {
+
+app-efforts-timeline .done {
   fill: #68be60
 }
 
-mac-efforts-timeline .overtime {
+
+app-efforts-timeline .overtime {
   fill: #f3cd2c
 }
 
@@ -1578,32 +1695,38 @@ mac-efforts-timeline .overtime {
 
 }
 
-mac-task-information {
+
+app-task-information {
   display: flex;
   color: #888;
   font-size: 14px;
 }
 
-mac-task-information .task-info {
+
+app-task-information .task-info {
   margin-right: 20px;
 }
 
-mac-projects-dashboard {
+
+app-projects-dashboard {
   display: block
 }
 
-mac-projects-dashboard .dashboard-header {
+
+app-projects-dashboard .dashboard-header {
   padding: 50px;
   background-color: #fff;
   overflow: hidden;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .18)
 }
 
-mac-projects-dashboard .dashboard-main {
+
+app-projects-dashboard .dashboard-main {
   padding: 50px
 }
 
-mac-projects-dashboard .dashboard-title {
+
+app-projects-dashboard .dashboard-title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 36px;
@@ -1611,7 +1734,8 @@ mac-projects-dashboard .dashboard-title {
   font-weight: 400
 }
 
-mac-projects-dashboard .dashboard-sub-title {
+
+app-projects-dashboard .dashboard-sub-title {
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 20px;
@@ -1619,7 +1743,8 @@ mac-projects-dashboard .dashboard-sub-title {
   font-weight: 800
 }
 
-mac-projects-dashboard .dashboard-list {
+
+app-projects-dashboard .dashboard-list {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -1627,7 +1752,8 @@ mac-projects-dashboard .dashboard-list {
   padding: 0
 }
 
-mac-projects-dashboard .dashboard-list-item {
+
+app-projects-dashboard .dashboard-list-item {
   display: block;
   width: 320px;
   flex-grow: 0;
@@ -1635,7 +1761,8 @@ mac-projects-dashboard .dashboard-list-item {
   margin-bottom: 20px
 }
 
-mac-projects-dashboard .dashboard-tasks {
+
+app-projects-dashboard .dashboard-tasks {
   display: block;
   background-color: #fff;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
@@ -1643,7 +1770,8 @@ mac-projects-dashboard .dashboard-tasks {
   margin-bottom: 50px
 }
 
-mac-project-summary {
+
+app-project-summary {
   display: block;
   cursor: pointer;
   background-color: #fff;
@@ -1651,14 +1779,16 @@ mac-project-summary {
   padding: 20px
 }
 
-mac-project-summary .summary-title {
+
+app-project-summary .summary-title {
   font-weight: 400;
   font-size: 24px;
   margin: 20px 0;
   line-height: 1
 }
 
-mac-project-summary .summary-label {
+
+app-project-summary .summary-label {
   width: 100%;
   margin-top: 30px;
   margin-bottom: 10px;
@@ -1668,56 +1798,73 @@ mac-project-summary .summary-label {
   font-size: 14px
 }
 
-mac-tasks-chart {
+
+app-tasks-chart {
   display: block
 }
 
-mac-tasks-chart .chart-container {
+
+app-tasks-chart .chart-container {
   margin-top: 20px
 }
 
-mac-tasks-chart svg {
+
+app-tasks-chart svg {
   overflow: visible
 }
 
-mac-tasks-chart .ct-label {
+
+app-tasks-chart .ct-label {
   font-size: 14px;
   white-space: nowrap
 }
 
-mac-tasks-chart .ct-grid, mac-tasks-chart .ct-line {
+
+app-tasks-chart .ct-grid,
+app-tasks-chart .ct-line {
   shape-rendering: crispEdges
 }
 
-mac-tasks-chart .ct-series-a .ct-line, mac-tasks-chart .ct-series-a .ct-point {
+
+app-tasks-chart .ct-series-a .ct-line,
+app-tasks-chart .ct-series-a .ct-point {
   stroke: #3699cb
 }
 
-mac-tasks-chart .ct-series-b .ct-line, mac-tasks-chart .ct-series-b .ct-point {
+
+app-tasks-chart .ct-series-b .ct-line,
+app-tasks-chart .ct-series-b .ct-point {
   stroke: #68be60
 }
 
-mac-tasks-chart .ct-series-c .ct-line, mac-tasks-chart .ct-series-c .ct-point {
+
+app-tasks-chart .ct-series-c .ct-line,
+app-tasks-chart .ct-series-c .ct-point {
   stroke: #f3cd2c
 }
 
-mac-tasks-chart .ct-series-d .ct-line, mac-tasks-chart .ct-series-d .ct-point {
+
+app-tasks-chart .ct-series-d .ct-line,
+app-tasks-chart .ct-series-d .ct-point {
   stroke: #ff5967
 }
 
-mac-tasks-chart .series-list {
+
+app-tasks-chart .series-list {
   display: flex;
   list-style: none;
   margin: 50px 20px 20px 0;
   padding: 0
 }
 
-mac-tasks-chart .series {
+
+app-tasks-chart .series {
   display: flex;
   margin-right: 20px
 }
 
-mac-tasks-chart .series:before {
+
+app-tasks-chart .series:before {
   display: block;
   content: "";
   flex-shrink: 0;
@@ -1727,23 +1874,28 @@ mac-tasks-chart .series:before {
   background-color: #bbb
 }
 
-mac-tasks-chart .series-1:before {
+
+app-tasks-chart .series-1:before {
   background-color: #3699cb
 }
 
-mac-tasks-chart .series-2:before {
+
+app-tasks-chart .series-2:before {
   background-color: #68be60
 }
 
-mac-tasks-chart .series-3:before {
+
+app-tasks-chart .series-3:before {
   background-color: #f3cd2c
 }
 
-mac-tasks-chart .series-4:before {
+
+app-tasks-chart .series-4:before {
   background-color: #ff5967
 }
 
-mac-activity-chart .ct-series-a .ct-bar {
+
+app-activity-chart .ct-series-a .ct-bar {
   stroke: #3699cb;
   stroke-width: 10px;
   shape-rendering: crispEdges;
