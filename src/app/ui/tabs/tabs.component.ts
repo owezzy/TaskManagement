@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
-import {Tab} from '../../../model';
+import {Component, ViewEncapsulation, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
+import {Tab} from '../../model';
 
 @Component({
   selector: 'app-tabs',
