@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Task, TaskListFilterType} from 'src/app/model';
 import {TaskService} from '../task.service';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-list',
@@ -10,32 +8,32 @@ import {map} from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None
 })
 export class TaskListComponent {
-  tasks: Observable<Task[]>;
-  filteredTasks: Observable<Task[]>;
+  tasks: Task[];
+  filteredTasks: Task[];
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
-  activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
+  activeTaskFilterType: TaskListFilterType = 'all';
 
   constructor(private taskService: TaskService) {
     this.tasks = taskService.getTasks();
-
-    this.filteredTasks = combineLatest(this.tasks, this.activeTaskFilterType)
-      .pipe(
-        map(([tasks, activeTaskFilterType]) => {
-          return tasks.filter((task: Task) => {
-            if (activeTaskFilterType === 'all') {
-              return true;
-            } else if (activeTaskFilterType === 'open') {
-              return !task.done;
-            } else {
-              return task.done;
-            }
-          });
-        })
-      );
+    this.filterTasks();
   }
 
   activateFilterType(type: TaskListFilterType) {
-    this.activeTaskFilterType.next(type);
+    this.activeTaskFilterType = type;
+    this.filterTasks();
+  }
+
+  filterTasks() {
+    this.filteredTasks = this.tasks
+      .filter((task: Task) => {
+        if (this.activeTaskFilterType === 'all') {
+          return true;
+        } else if (this.activeTaskFilterType === 'open') {
+          return !task.done;
+        } else {
+          return task.done;
+        }
+      });
   }
 
   addTask(title: string) {
@@ -44,9 +42,13 @@ export class TaskListComponent {
     };
 
     this.taskService.addTask(task);
+    this.tasks = this.taskService.getTasks();
+    this.filterTasks();
   }
 
   updateTask(task: Task) {
     this.taskService.updateTask(task);
+    this.tasks = this.taskService.getTasks();
+    this.filterTasks();
   }
 }
