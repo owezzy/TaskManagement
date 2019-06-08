@@ -13,6 +13,7 @@ import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {Database} from './database';
 import { TaskListContainerComponent } from './container/task-list-container/task-list-container.component';
 import {ProjectService} from './project/project.service';
+import { ProjectComponent } from './project/project/project.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ProjectService} from './project/project.service';
     EnterTaskComponent,
     CheckboxComponent,
     ToggleComponent,
-    TaskListContainerComponent
+    TaskListContainerComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
