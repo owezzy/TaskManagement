@@ -1,29 +1,52 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
-import {Task, TaskListFilterType} from '../../model';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Task, TaskListFilterType} from 'src/app/model';
+import {TaskService} from '../task.service';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  encapsulation: ViewEncapsulation.None
 })
 export class TaskListComponent {
-  @Input() taskFilterTypes: TaskListFilterType[];
-  @Input() activeTaskFilterType: TaskListFilterType;
-  @Input() tasks: Task[];
-  @Output() outAddTask = new EventEmitter<string>();
-  @Output() outActiveFilterType = new EventEmitter<TaskListFilterType>();
-  @Output() outUpdateTask = new EventEmitter<Task>();
+  tasks: Observable<Task[]>;
+  filteredTasks: Observable<Task[]>;
+  taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
+  activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
-  addTask(title: string) {
-    this.outAddTask.emit(title);
+  constructor(private taskService: TaskService) {
+    this.tasks = taskService.getTasks();
+
+    this.filteredTasks = combineLatest(this.tasks, this.activeTaskFilterType)
+      .pipe(
+        map(([tasks, activeTaskFilterType]) => {
+          return tasks.filter((task: Task) => {
+            if (activeTaskFilterType === 'all') {
+              return true;
+            } else if (activeTaskFilterType === 'open') {
+              return !task.done;
+            } else {
+              return task.done;
+            }
+          });
+        })
+      );
   }
 
   activateFilterType(type: TaskListFilterType) {
-    this.outActiveFilterType.emit(type);
+    this.activeTaskFilterType.next(type);
+  }
+
+  addTask(title: string) {
+    const task: Task = {
+      title, done: false
+    };
+
+    this.taskService.addTask(task);
   }
 
   updateTask(task: Task) {
-    this.outUpdateTask.emit(task);
+    this.taskService.updateTask(task);
   }
 }
