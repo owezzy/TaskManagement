@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {Project, Task, TaskListFilterType} from '../../model';
 import {TaskService} from '../../tasks/task.service';
@@ -13,14 +13,15 @@ import {ProjectService} from '../../project/project.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskListContainerComponent {
+  selectedProject: Observable<Project>;
   tasks: Observable<Task[]>;
   filteredTasks: Observable<Task[]>;
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
-  selectedProject: Observable<Project>;
 
   constructor(private taskService: TaskService, private projectService: ProjectService) {
     this.tasks = taskService.getTasks();
+    // @ts-ignore
     this.selectedProject = this.projectService.getSelectedProject();
 
     this.tasks = this.selectedProject.pipe(
