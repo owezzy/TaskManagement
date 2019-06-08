@@ -15,10 +15,18 @@ import { TaskListContainerComponent } from './container/task-list-container/task
 import {ProjectService} from './project/project.service';
 import { ProjectComponent } from './project/project/project.component';
 import { ProjectContainerComponent } from './container/project-container/project-container.component';
-import { TabsComponent } from './ui/tabs/tabs/tabs.component';
-import { NavigationItemComponent } from './ui/navigation-item/navigation-item/navigation-item.component';
-import { NavigationSectionComponent } from './ui/navigation-section/navigation-section/navigation-section.component';
-import { NavigationComponent } from './ui/navigation/navigation/navigation.component';
+import { TabsComponent } from './ui/tabs/tabs.component';
+import { NavigationItemComponent } from './ui/navigation-item/navigation-item.component';
+import { NavigationSectionComponent } from './ui/navigation-section/navigation-section.component';
+import { NavigationComponent } from './ui/navigation/navigation.component';
+import { EditorComponent } from './ui/editor/editor.component';
+import { ProfilePictureComponent } from './user/profile-picture/profile-picture/profile-picture.component';
+import { UserAreaComponent } from './user/user-area/user-area/user-area.component';
+import { FromNowPipe } from './pipes/from-now.pipe';
+import { CommentComponent } from './comments/comment/comment.component';
+import { CommentsComponent } from './comments/comments/comments/comments.component';
+import { ProjectCommentsContainerComponent } from './container/project-comments-container/project-comments-container.component';
+import {UserService} from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -34,14 +42,21 @@ import { NavigationComponent } from './ui/navigation/navigation/navigation.compo
     TabsComponent,
     NavigationItemComponent,
     NavigationSectionComponent,
-    NavigationComponent
+    NavigationComponent,
+    EditorComponent,
+    ProfilePictureComponent,
+    UserAreaComponent,
+    FromNowPipe,
+    CommentComponent,
+    CommentsComponent,
+    ProjectCommentsContainerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0})
   ],
-  providers: [TaskService, ProjectService],
+  providers: [TaskService, ProjectService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
