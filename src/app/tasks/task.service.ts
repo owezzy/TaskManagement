@@ -23,7 +23,7 @@ export class TaskService {
   }
 
   addTask(task: Task) {
-    return this.http.post<Task>('api/tasks', task)
+    return this.http.post<Task>('/api/tasks', task)
       .subscribe(() => this.loadTasks());
   }
 

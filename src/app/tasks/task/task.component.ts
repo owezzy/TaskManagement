@@ -24,4 +24,11 @@ export class TaskComponent {
       done
     });
   }
+
+  updateTitle(title: string) {
+    this.outUpdateTask.emit({
+      ...this.task,
+      title
+    });
+  }
 }

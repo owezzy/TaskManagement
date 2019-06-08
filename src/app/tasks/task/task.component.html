@@ -1,3 +1,8 @@
 <app-checkbox [checked]="task.done"
               (outCheck)="updateTask($event)"></app-checkbox>
-<div>{{task.title}}</div>
+<div class="title">
+  <app-editor [content]="task.title"
+              [showControls]="true"
+              (outSaveEdit)="updateTitle($event)">
+  </app-editor>
+</div>

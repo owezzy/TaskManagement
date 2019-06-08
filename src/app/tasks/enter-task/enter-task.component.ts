@@ -9,8 +9,8 @@ import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, ViewEn
 
 })
 export class EnterTaskComponent {
-
   @Output() outEnterTask = new EventEmitter<string>();
+
   enterTask(titleInput: HTMLInputElement) {
     this.outEnterTask.emit(titleInput.value);
     titleInput.value = '';
