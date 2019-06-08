@@ -20,8 +20,6 @@ export class TaskListContainerComponent {
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
   constructor(private taskService: TaskService, private projectService: ProjectService) {
-    this.tasks = taskService.getTasks();
-    // @ts-ignore
     this.selectedProject = this.projectService.getSelectedProject();
 
     this.tasks = this.selectedProject.pipe(
