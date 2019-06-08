@@ -24,11 +24,20 @@ export class ProjectService {
       .subscribe((projects) => this.projects.next(projects));
   }
 
+  getProjects() {
+    return this.projects.asObservable();
+  }
+
   selectProject(id: number) {
     this.selectedProjectId.next(id);
   }
 
   getSelectedProject() {
-    return this.selectedProjectId;
+    return this.selectedProject;
+  }
+
+  updateProject(project: Project) {
+    this.http.post(`/api/projects/${project.id}`, project)
+      .subscribe(() => this.loadProjects());
   }
 }
