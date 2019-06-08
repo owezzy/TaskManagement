@@ -4,9 +4,7 @@ import {Project} from '../model';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProjectService {
   private projects = new BehaviorSubject<Project[]>([]);
   private selectedProjectId = new BehaviorSubject<number>(1);

@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input} from '@angular/core';
-import {Project} from '../../model';
+import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, Output, EventEmitter} from '@angular/core';
+import {Project, Tab} from '../../model';
 
 @Component({
   selector: 'app-project',
@@ -10,4 +10,11 @@ import {Project} from '../../model';
 })
 export class ProjectComponent {
   @Input() project: Project;
+  @Input() tabs: Tab[];
+  @Input() activeTab: Tab;
+  @Output() outActivateTab = new EventEmitter<Tab>();
+
+  activateTab(tab: Tab) {
+    this.outActivateTab.emit(tab);
+  }
 }
