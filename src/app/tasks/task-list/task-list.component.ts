@@ -1,54 +1,29 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Task, TaskListFilterType} from 'src/app/model';
-import {TaskService} from '../task.service';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Task, TaskListFilterType} from '../../model';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskListComponent {
-  tasks: Task[];
-  filteredTasks: Task[];
-  taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
-  activeTaskFilterType: TaskListFilterType = 'all';
+  @Input() taskFilterTypes: TaskListFilterType[];
+  @Input() activeTaskFilterType: TaskListFilterType;
+  @Input() tasks: Task[];
+  @Output() outAddTask = new EventEmitter<string>();
+  @Output() outActiveFilterType = new EventEmitter<TaskListFilterType>();
+  @Output() outUpdateTask = new EventEmitter<Task>();
 
-  constructor(private taskService: TaskService) {
-    this.tasks = taskService.getTasks();
-    this.filterTasks();
+  addTask(title: string) {
+    this.outAddTask.emit(title);
   }
 
   activateFilterType(type: TaskListFilterType) {
-    this.activeTaskFilterType = type;
-    this.filterTasks();
-  }
-
-  filterTasks() {
-    this.filteredTasks = this.tasks
-      .filter((task: Task) => {
-        if (this.activeTaskFilterType === 'all') {
-          return true;
-        } else if (this.activeTaskFilterType === 'open') {
-          return !task.done;
-        } else {
-          return task.done;
-        }
-      });
-  }
-
-  addTask(title: string) {
-    const task: Task = {
-      title, done: false
-    };
-
-    this.taskService.addTask(task);
-    this.tasks = this.taskService.getTasks();
-    this.filterTasks();
+    this.outActiveFilterType.emit(type);
   }
 
   updateTask(task: Task) {
-    this.taskService.updateTask(task);
-    this.tasks = this.taskService.getTasks();
-    this.filterTasks();
+    this.outUpdateTask.emit(task);
   }
 }

@@ -1,0 +1,18 @@
+<header class="header">
+  <h2 class="title">
+    <app-editor [content]="project.title"
+                [showControls]="true"
+                (outSaveEdit)="updateTitle($event)">
+    </app-editor>
+  </h2>
+  <app-editor [content]="project.description"
+              [showControls]="true"
+              (outSaveEdit)="updateDescription($event)">
+  </app-editor>
+</header>
+<app-tabs [tabs]="tabs"
+          [activeTab]="activeTab"
+          (outActivateTab)="activateTab($event)">
+</app-tabs>
+<app-task-list-container *ngIf="activeTab.id === 'tasks'" ></app-task-list-container>
+<app-project-comments-container *ngIf="activeTab.id === 'comments'"></app-project-comments-container>

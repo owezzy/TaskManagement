@@ -1,7 +1,19 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <app-task-list></app-task-list>
-</div>
+<aside class="side-nav">
+  <app-user-area [user]="user | async"
+                 [openTasksCount]="openTaskCount| async" >
+  </app-user-area>
+  <app-navigation>
+    <app-navigation-section title="Projects">
+      <app-navigation-item *ngFor="let project of projects | async"
+                           [navId]="project.id"
+                           [title]="project.title"
+                           [class.active]="project.id === (selectedProject | async).id"
+                           (outActivateNavigationItem)="selectProject($event)">
+      </app-navigation-item>
+    </app-navigation-section>
+  </app-navigation>
+</aside>
+
+<main class="main">
+  <app-project-container></app-project-container>
+</main>

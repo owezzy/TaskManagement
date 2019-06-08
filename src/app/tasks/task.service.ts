@@ -1,28 +1,42 @@
 import {Injectable} from '@angular/core';
 import {Task} from '../model';
+import {BehaviorSubject} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
 @Injectable()
 export class TaskService {
 
-  private tasks: Task[] = [
-    {id: 1, title: 'Task 1', done: false},
-    {id: 2, title: 'Task 2', done: true}
-  ];
+  private tasks = new BehaviorSubject<Task[]>([]);
 
-  getTasks(): Task[] {
-    return this.tasks.slice();
+  constructor(private http: HttpClient) {
+    this.loadTasks();
+  }
+
+  private loadTasks() {
+    this.http.get<Task[]>('/api/tasks')
+      .subscribe((tasks) => this.tasks.next(tasks));
+  }
+
+  getTasks() {
+    return this.tasks.asObservable();
   }
 
   addTask(task: Task) {
-    this.tasks.push({
-      ...task,
-      id: this.tasks.length + 1
-    });
+    return this.http.post<Task>('/api/tasks', task)
+      .subscribe(() => this.loadTasks());
   }
 
   updateTask(task: Task) {
-    const index = this.tasks
-      .findIndex((t) => t.id === task.id);
-    this.tasks[index] = task;
+    return this.http.post(`/api/tasks/${task.id}`, task)
+      .subscribe(() => this.loadTasks());
+  }
+
+  getProjectTasks(projectId: number) {
+    return this.tasks
+      .asObservable()
+      .pipe(
+        map((tasks) => tasks.filter((task) => task.projectId === projectId))
+      );
   }
 }

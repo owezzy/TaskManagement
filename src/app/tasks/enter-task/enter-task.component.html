@@ -1,5 +1,7 @@
 <input type="text"
- placeholder="Enter new task title..." #titleInput>
-<button (click)="enterTask(titleInput)">
+ placeholder="Enter new task title..." #titleInput
+       (keydown.enter)="enterTask(titleInput)"
+       class="title-input">
+<button class="button" (click)="enterTask(titleInput)">
   Add Task
 </button>
