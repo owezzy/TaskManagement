@@ -47,6 +47,7 @@ export class TaskListContainerComponent {
     this.activeTaskFilterType.next(type);
   }
 
+  // note take operator
   addTask(title: string) {
     this.selectedProject
       .pipe(
