@@ -14,6 +14,11 @@ import {Database} from './database';
 import { TaskListContainerComponent } from './container/task-list-container/task-list-container.component';
 import {ProjectService} from './project/project.service';
 import { ProjectComponent } from './project/project/project.component';
+import { ProjectContainerComponent } from './container/project-container/project-container.component';
+import { TabsComponent } from './ui/tabs/tabs/tabs.component';
+import { NavigationItemComponent } from './ui/navigation-item/navigation-item/navigation-item.component';
+import { NavigationSectionComponent } from './ui/navigation-section/navigation-section/navigation-section.component';
+import { NavigationComponent } from './ui/navigation/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { ProjectComponent } from './project/project/project.component';
     CheckboxComponent,
     ToggleComponent,
     TaskListContainerComponent,
-    ProjectComponent
+    ProjectComponent,
+    ProjectContainerComponent,
+    TabsComponent,
+    NavigationItemComponent,
+    NavigationSectionComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
