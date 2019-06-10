@@ -1,10 +1,14 @@
 import {Component, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
+import {map, switchMap, take} from 'rxjs/operators';
+
 import {Project, Task, TaskListFilterType} from '../../model';
 import {TaskService} from '../../tasks/task.service';
-import {map, switchMap, take} from 'rxjs/operators';
 import {ProjectService} from '../../project/project.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivitiesService} from '../../activities/activites.service';
+import {limitWithEllipsis} from '../../utilities/string-utilities';
+
 
 @Component({
   selector: 'app-task-list-container',
@@ -22,7 +26,8 @@ export class TaskListContainerComponent {
 
   constructor(private taskService: TaskService,
               private projectService: ProjectService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private activitiesService: ActivitiesService) {
     this.selectedProject = combineLatest(
       this.projectService.getProjects(),
       route.parent.params
@@ -67,6 +72,12 @@ export class TaskListContainerComponent {
         done: false
       };
       this.taskService.addTask(task);
+      this.activitiesService.logProjectActivity(
+        project.id,
+        'tasks',
+        'A task was added',
+        `A new task "${limitWithEllipsis(title, 30)}" was added to #project-${project.id}`
+      );
     });
 
   }
