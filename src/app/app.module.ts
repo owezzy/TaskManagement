@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './tasks/task-list/task-list.component';
@@ -27,6 +28,7 @@ import { CommentComponent } from './comments/comment/comment.component';
 import { CommentsComponent } from './comments/comments/comments/comments.component';
 import { ProjectCommentsContainerComponent } from './container/project-comments-container/project-comments-container.component';
 import {UserService} from './user/user.service';
+import {routes} from './routes';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import {UserService} from './user/user.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0})
+    HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0}),
+    RouterModule.forRoot(routes)
   ],
   providers: [TaskService, ProjectService, UserService],
   bootstrap: [AppComponent]
