@@ -7,13 +7,13 @@
       <app-navigation-item *ngFor="let project of projects | async"
                            [navId]="project.id"
                            [title]="project.title"
-                           [class.active]="project.id === (selectedProject | async).id"
-                           (outActivateNavigationItem)="selectProject($event)">
+                           routerLinkActive="active"
+                           [routerLink]="['/projects', project.id]">
       </app-navigation-item>
     </app-navigation-section>
   </app-navigation>
 </aside>
 
 <main class="main">
-  <app-project-container></app-project-container>
+  <router-outlet></router-outlet>
 </main>
