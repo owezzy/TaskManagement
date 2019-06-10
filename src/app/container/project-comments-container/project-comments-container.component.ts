@@ -1,9 +1,10 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-import {Observable} from 'rxjs';
+import {Component, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
+import {combineLatest, Observable} from 'rxjs';
 import {Comment, CommentUpdate, Project, User} from '../../model';
 import {ProjectService} from '../../project/project.service';
 import {UserService} from '../../user/user.service';
 import {map, take} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-project-comments-container',
@@ -12,14 +13,23 @@ import {map, take} from 'rxjs/operators';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProjectCommentsContainerComponent  {
+export class ProjectCommentsContainerComponent {
   user: Observable<User>;
   selectedProject: Observable<Project>;
   projectComments: Observable<Comment[]>;
 
-  constructor(private projectService: ProjectService, private userService: UserService) {
+  constructor(private projectService: ProjectService,
+              private userService: UserService,
+              private route: ActivatedRoute) {
     this.user = userService.getCurrentUser();
-    this.selectedProject = projectService.getSelectedProject();
+    this.selectedProject = combineLatest(
+      projectService.getProjects(),
+      route.parent.params)
+      .pipe(
+        map(([projects, routeParams]) =>
+          projects.find((project) => project.id === +routeParams.projectId))
+      );
+
     this.projectComments = this.selectedProject
       .pipe(
         map((project) => project.comments)
