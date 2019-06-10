@@ -4,6 +4,7 @@ import {Project, Task, TaskListFilterType} from '../../model';
 import {TaskService} from '../../tasks/task.service';
 import {map, switchMap, take} from 'rxjs/operators';
 import {ProjectService} from '../../project/project.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-task-list-container',
@@ -19,8 +20,16 @@ export class TaskListContainerComponent {
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
-  constructor(private taskService: TaskService, private projectService: ProjectService) {
-    this.selectedProject = this.projectService.getSelectedProject();
+  constructor(private taskService: TaskService,
+              private projectService: ProjectService,
+              private route: ActivatedRoute) {
+    this.selectedProject = combineLatest(
+      this.projectService.getProjects(),
+      route.parent.params
+    ).pipe(
+      map(([projects, routeParams]) =>
+        projects.find((project) => project.id === +routeParams.projectId))
+    );
 
     this.tasks = this.selectedProject.pipe(
       switchMap((project) => this.taskService.getProjectTasks(project.id))
