@@ -14,9 +14,14 @@ export class ActivitiesService {
   }
 
   private loadActivities() {
+    this.http.get<Activity[]>('/api/activities')
+      .subscribe((activities) => this.activities.next(activities));
+  }
+
+  getActivities() {
     return this.activities
       .asObservable().pipe(
-        map(activities => activities.sort((a, b) => b.time = a.time))
+        map(activities => activities.sort((a, b) => b.time - a.time))
       );
   }
 
