@@ -29,6 +29,7 @@ import { CommentsComponent } from './comments/comments/comments/comments.compone
 import { ProjectCommentsContainerComponent } from './container/project-comments-container/project-comments-container.component';
 import {UserService} from './user/user.service';
 import {routes} from './routes';
+import {ProjectContainerGuard} from './guards/project-container.guard';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import {routes} from './routes';
     HttpClientInMemoryWebApiModule.forRoot(Database, {delay: 0}),
     RouterModule.forRoot(routes)
   ],
-  providers: [TaskService, ProjectService, UserService],
+  providers: [TaskService, ProjectService, UserService, ProjectContainerGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
