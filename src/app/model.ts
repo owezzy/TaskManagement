@@ -3,6 +3,7 @@ export interface Task {
   readonly projectId?: number;
   readonly title: string;
   readonly done: boolean;
+  readonly order: number;
 }
 
 export type TaskListFilterType = 'all' | 'open' | 'done';
@@ -59,3 +60,29 @@ export interface ProjectActivity extends ActivityBase {
 }
 
 export type Activity = ProjectActivity;
+
+
+export interface Tag {
+  type: string;
+  hashTag: string;
+  title: string;
+  link: string;
+}
+
+export interface InputPosition {
+  top: number;
+  left: number;
+  caretOffset: number;
+}
+
+export interface HashTagInput {
+  hashTag: string;
+  position: InputPosition;
+}
+
+export interface TagSelection {
+  tag: Tag;
+  hashTagInput: HashTagInput;
+}
+
+export type DraggableType = 'task';
