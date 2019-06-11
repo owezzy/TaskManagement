@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
   name: 'tags',
   pure: false
 })
+
 export class TagsPipe implements PipeTransform {
 
   constructor(
@@ -20,7 +21,6 @@ export class TagsPipe implements PipeTransform {
     }
     return this.tagService.parse(value)
       .pipe(
-        map(parsed => this.sanitizer.bypassSecurityTrustHtml(parsed)))
+        map(parsed => this.sanitizer.bypassSecurityTrustHtml(parsed)));
   }
-
 }
