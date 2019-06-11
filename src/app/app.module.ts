@@ -85,7 +85,8 @@ import {TagsService} from './tags/tags.service';
     ProjectService,
     UserService,
     TagsService,
-    ProjectContainerGuard],
+    ProjectContainerGuard
+  ],
 
   bootstrap: [AppComponent]
 })
