@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation, ChangeDetectionStrategy, Output, Input, EventEmitter} from '@angular/core';
-import {User, Comment} from '../../model';
+import {User, Comment, Tag} from '../../model';
 
 @Component({
   selector: 'app-comment',
@@ -11,6 +11,7 @@ import {User, Comment} from '../../model';
 export class CommentComponent {
   @Input() comment: Comment;
   @Input() user: User;
+  @Input() tags: Tag[];
   @Output() outUpdateComment = new EventEmitter<Comment>();
 
   updateComment(content: string) {

@@ -11,6 +11,7 @@
   <div class="content">
     <app-editor [content]="comment.content"
                 [showControls]="comment.user.id === user.id"
+                [tags]="tags"
                 (outSaveEdit)="updateComment($event)">
     </app-editor>
   </div>
