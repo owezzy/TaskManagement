@@ -8,7 +8,9 @@ import {
   ViewChild,
   ElementRef
 } from '@angular/core';
-import {CommentUpdate, Comment, User} from '../../../model';
+import {CommentUpdate, Comment, User, Tag, TagSelection} from '../../model';
+import {TagsInputDirective} from '../../tags/tags-input.directive';
+import {splice} from '../../utilities/string-utilities';
 
 
 @Component({
@@ -22,9 +24,21 @@ export class CommentsComponent {
 
   @Input() user: User;
   @Input() comments: Comment[];
+  @Input() tags: Tag[];
   @Output() outUpdateComment = new EventEmitter<CommentUpdate>();
   @Output() outCreateComment = new EventEmitter<Comment>();
-  @ViewChild('commentContentEditable', { static: false }) commentContentEditable: ElementRef;
+  @ViewChild('commentContentEditable', {static: false}) commentContentEditable: ElementRef;
+  @ViewChild('commentContentEditable', {static: true, read: TagsInputDirective}) tagsInput: TagsInputDirective;
+
+  selectTag(tagsSelection: TagSelection) {
+    this.commentContentEditable.nativeElement.textContent = splice(
+      this.commentContentEditable.nativeElement.textContent,
+      tagsSelection.hashTagInput.position.caretOffset,
+      tagsSelection.hashTagInput.hashTag.length,
+      tagsSelection.tag.hashTag
+    );
+    this.tagsInput.reset();
+  }
 
   createComment() {
     this.outCreateComment.emit({
