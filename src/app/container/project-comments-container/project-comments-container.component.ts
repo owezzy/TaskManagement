@@ -3,11 +3,12 @@ import {ActivatedRoute} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
 import {map, take} from 'rxjs/operators';
 
-import {Comment, CommentUpdate, Project, User} from '../../model';
+import {Comment, CommentUpdate, Project, Tag, User} from '../../model';
 import {ProjectService} from '../../project/project.service';
 import {UserService} from '../../user/user.service';
 import {ActivitiesService} from '../../activities/activites.service';
 import {limitWithEllipsis} from '../../utilities/string-utilities';
+import {TagsService} from '../../tags/tags.service';
 
 @Component({
   selector: 'app-project-comments-container',
@@ -20,13 +21,15 @@ export class ProjectCommentsContainerComponent {
   user: Observable<User>;
   selectedProject: Observable<Project>;
   projectComments: Observable<Comment[]>;
-  // tags: Observable<Tag[]>
+  tags: Observable<Tag[]>;
 
   constructor(private projectService: ProjectService,
               private userService: UserService,
               private route: ActivatedRoute,
               private activitiesService: ActivitiesService,
+              private tagsService: TagsService
               ) {
+    this.tags = this.tagsService.tags;
     this.user = userService.getCurrentUser();
     this.selectedProject = combineLatest(
       projectService.getProjects(),

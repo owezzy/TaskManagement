@@ -2,8 +2,15 @@
 <div class="add-comment-section">
   <div #commentContentEditable
        class="add-comment-box"
-       contenteditable="true">
+       contenteditable="true"
+       appTagsInput>
   </div>
+  <app-tags-select *ngIf="tags && tagsInput.hashTagChange | async"
+                   [hashTagInput]="tagsInput.hashTagChange | async"
+                   [tags]="tags"
+                   (outSelectTag)="selectTag($event)">
+  </app-tags-select>
+
   <button class="button" (click)="createComment()">Add Comment</button>
 </div>
 <ng-container *ngIf="comments.length > 0">
@@ -11,6 +18,7 @@
   <app-comment *ngFor="let comment of comments; let index = index"
                [comment]="comment"
                [user]="user"
+               [tags]="tags"
                (outUpdateComment)="updateComment(index, $event)">
   </app-comment>
 </ng-container>

@@ -1,7 +1,15 @@
 <div #editableContentElement
      class="editable-content"
-     contenteditable="true"></div>
-<div class="output">{{content || '-'}}</div>
+     contenteditable="true"
+     appTagsInput></div>
+<app-tags-select
+  *ngIf="tags && tagsInput.hashTagChange | async"
+  [hashTagInput]="tagsInput.hashTagChange | async"
+  [tags]="tags"
+  (outSelectTag)="selectTag($event)">
+</app-tags-select>
+
+<div class="output" [innerHTML]="content ? (content | tags | async) : '-'"></div>
 <div *ngIf="showControls && !editMode"
      class="controls">
   <button (click)="beginEdit()" class="icon-edit"></button>

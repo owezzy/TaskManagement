@@ -37,7 +37,8 @@ export class TaskListContainerComponent {
     );
 
     this.tasks = this.selectedProject.pipe(
-      switchMap((project) => this.taskService.getProjectTasks(project.id))
+      switchMap((project) => this.taskService.getProjectTasks(project.id)),
+      map(tasks => tasks.sort((a: Task, b: Task) => b.order - a.order))
     );
 
     this.filteredTasks = combineLatest(this.tasks, this.activeTaskFilterType)
@@ -62,20 +63,24 @@ export class TaskListContainerComponent {
 
   // note take operator
   addTask(title: string) {
-    this.selectedProject
+    combineLatest(this.selectedProject, this.tasks)
       .pipe(
         take(1)
-      ).subscribe((project) => {
+      ).subscribe(([project, tasks]) => {
+      const position = tasks.reduce(
+        (max, t: Task) => t.order > max ? t.order : max, 0
+      );
       const task: Task = {
         projectId: project.id,
         title,
-        done: false
+        done: false,
+        order: position
       };
       this.taskService.addTask(task);
       this.activitiesService.logProjectActivity(
         project.id,
         'tasks',
-        'A task was added',
+        'Task Added',
         `A new task "${limitWithEllipsis(title, 30)}" was added to #project-${project.id}`
       );
     });

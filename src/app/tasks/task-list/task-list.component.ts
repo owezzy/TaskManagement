@@ -26,4 +26,19 @@ export class TaskListComponent {
   updateTask(task: Task) {
     this.outUpdateTask.emit(task);
   }
+
+  dropTask(target: Task, source: Task) {
+    if (target.id === source.id) {
+      return;
+    }
+
+    this.outUpdateTask.emit({
+      ...target,
+      order: source.order
+    });
+    this.outUpdateTask.emit({
+      ...source,
+      order: target.order
+    });
+  }
 }
