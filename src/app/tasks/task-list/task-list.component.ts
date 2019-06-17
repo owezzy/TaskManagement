@@ -1,5 +1,7 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
 import {Task, TaskListFilterType} from '../../model';
+import {DraggableDirective} from '../../draggable/draggable.directive';
+import {DraggableDropZoneDirective} from '../../draggable/draggable-drop-zone.directive';
 
 @Component({
   selector: 'app-task-list',
@@ -11,6 +13,7 @@ export class TaskListComponent {
   @Input() taskFilterTypes: TaskListFilterType[];
   @Input() activeTaskFilterType: TaskListFilterType;
   @Input() tasks: Task[];
+
   @Output() outAddTask = new EventEmitter<string>();
   @Output() outActiveFilterType = new EventEmitter<TaskListFilterType>();
   @Output() outUpdateTask = new EventEmitter<Task>();
@@ -25,5 +28,20 @@ export class TaskListComponent {
 
   updateTask(task: Task) {
     this.outUpdateTask.emit(task);
+  }
+
+  dropTask(target: Task, source: Task) {
+    if (target.id === source.id) {
+      return;
+    }
+
+    this.outUpdateTask.emit({
+      ...target,
+      order: source.order
+    });
+    this.outUpdateTask.emit({
+      ...source,
+      order: target.order
+    });
   }
 }

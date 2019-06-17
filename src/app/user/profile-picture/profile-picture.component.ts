@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, Input, SimpleChanges, OnChanges} from '@angular/core';
-import {User} from '../../../model';
+import {User} from '../../model';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
