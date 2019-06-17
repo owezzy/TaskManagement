@@ -1,10 +1,13 @@
 import {Component, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {combineLatest, Observable} from 'rxjs';
+import {map, take} from 'rxjs/operators';
+
 import {Comment, CommentUpdate, Project, User} from '../../model';
 import {ProjectService} from '../../project/project.service';
 import {UserService} from '../../user/user.service';
-import {map, take} from 'rxjs/operators';
-import {ActivatedRoute} from '@angular/router';
+import {ActivitiesService} from '../../activities/activites.service';
+import {limitWithEllipsis} from '../../utilities/string-utilities';
 
 @Component({
   selector: 'app-project-comments-container',
@@ -17,10 +20,13 @@ export class ProjectCommentsContainerComponent {
   user: Observable<User>;
   selectedProject: Observable<Project>;
   projectComments: Observable<Comment[]>;
+  // tags: Observable<Tag[]>
 
   constructor(private projectService: ProjectService,
               private userService: UserService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private activitiesService: ActivitiesService,
+              ) {
     this.user = userService.getCurrentUser();
     this.selectedProject = combineLatest(
       projectService.getProjects(),
@@ -41,10 +47,18 @@ export class ProjectCommentsContainerComponent {
       .pipe(
         take(1)
       )
-      .subscribe((project) => this.projectService.updateProject({
-        ...project,
-        comments: [...project.comments, comment]
-      }));
+      .subscribe((project) => {
+        this.projectService.updateProject({
+          ...project,
+          comments: [...project.comments, comment]
+        });
+        this.activitiesService.logProjectActivity(
+          project.id,
+          'comments',
+          'New comment was added',
+          `A new comment "${limitWithEllipsis(comment.content, 30)}" was added to #project-${project.id}.`
+        );
+      });
   }
 
   updateComment(update: CommentUpdate) {
@@ -54,11 +68,18 @@ export class ProjectCommentsContainerComponent {
       )
       .subscribe((project) => {
         const updatedComments = project.comments.slice();
+        const oldComment = updatedComments[update.index];
         updatedComments[update.index] = update.comment;
         this.projectService.updateProject({
           ...project,
           comments: updatedComments
         });
+        this.activitiesService.logProjectActivity(
+          project.id,
+          'comments',
+          'New comment was added',
+          `A new comment "${limitWithEllipsis(oldComment.content, 30)}" was added to #project-${project.id}.`
+        );
       });
   }
 }
