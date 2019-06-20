@@ -6,6 +6,7 @@ export interface Task {
   readonly order: number;
 }
 
+
 export type TaskListFilterType = 'all' | 'open' | 'done';
 
 

@@ -1,5 +1,5 @@
 import {Component, ViewEncapsulation, ChangeDetectionStrategy, Input} from '@angular/core';
-import {User} from '../../../model';
+import {User} from '../../model';
 
 @Component({
   selector: 'app-user-area',

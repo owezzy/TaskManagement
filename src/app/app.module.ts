@@ -22,7 +22,7 @@ import {NavigationSectionComponent} from './ui/navigation-section/navigation-sec
 import {NavigationComponent} from './ui/navigation/navigation.component';
 import {EditorComponent} from './ui/editor/editor.component';
 import {ProfilePictureComponent} from './user/profile-picture/profile-picture.component';
-import {UserAreaComponent} from './user/user-area/user-area/user-area.component';
+import {UserAreaComponent} from './user/user-area/user-area.component';
 import {FromNowPipe} from './pipes/from-now.pipe';
 import {CommentComponent} from './comments/comment/comment.component';
 import {CommentsComponent} from './comments/comments/comments.component';

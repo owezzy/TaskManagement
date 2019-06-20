@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {Project} from '../model';
 import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class ProjectService {

@@ -8,34 +8,22 @@ import { By } from '@angular/platform-browser';
 // import 'rxjs/add/observable/throw';
 
 import {Component, Directive} from '@angular/core';
-import {ProjectActivitiesContainerComponent} from './project-activities-container.component';
-import {ProjectService} from '../../project/project.service';
-import {ActivitiesService} from '../../activities/activites.service';
-import {ActivatedRoute} from '@angular/router';
+import {CommentsComponent} from './comments.component';
 
-@Injectable()
-class MockProjectService { }
-
-@Injectable()
-class MockActivitiesService { }
-
-describe('ProjectActivitiesContainerComponent', () => {
+describe('CommentsComponent', () => {
   let fixture;
   let component;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ProjectActivitiesContainerComponent
+        CommentsComponent
       ],
       providers: [
-        {provide: ProjectService, useClass: MockProjectService},
-        {provide: ActivitiesService, useClass: MockActivitiesService},
-        ActivatedRoute,
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
-    fixture = TestBed.createComponent(ProjectActivitiesContainerComponent);
+    fixture = TestBed.createComponent(CommentsComponent);
     component = fixture.debugElement.componentInstance;
   });
 
@@ -43,8 +31,16 @@ describe('ProjectActivitiesContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should run #selectionChange()', async () => {
-    // const result = component.selectionChange(selection);
+  it('should run #selectTag()', async () => {
+    // const result = component.selectTag(tagsSelection);
+  });
+
+  it('should run #createComment()', async () => {
+    // const result = component.createComment();
+  });
+
+  it('should run #updateComment()', async () => {
+    // const result = component.updateComment(index, comment);
   });
 
 });
