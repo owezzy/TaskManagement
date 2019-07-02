@@ -42,6 +42,8 @@ import { TagsSelectComponent } from './tags/tags-select/tags-select.component';
 import {TagsService} from './tags/tags.service';
 import { DraggableDirective } from './draggable/draggable.directive';
 import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.directive';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { TaskDetailsContainerComponent } from './container/task-details-container/task-details-container.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.dire
     TagsInputDirective,
     TagsSelectComponent,
     DraggableDirective,
-    DraggableDropZoneDirective
+    DraggableDropZoneDirective,
+    TaskDetailsComponent,
+    TaskDetailsContainerComponent
   ],
   imports: [
     BrowserModule,
