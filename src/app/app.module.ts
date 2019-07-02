@@ -45,6 +45,7 @@ import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.dire
 import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
 import { TaskDetailsContainerComponent } from './container/task-details-container/task-details-container.component';
 import { FormatDurationPipe } from './pipes/format-duration.pipe';
+import { DurationComponent } from './ui/duration/duration.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { FormatDurationPipe } from './pipes/format-duration.pipe';
     DraggableDropZoneDirective,
     TaskDetailsComponent,
     TaskDetailsContainerComponent,
-    FormatDurationPipe
+    FormatDurationPipe,
+    DurationComponent
   ],
   imports: [
     BrowserModule,
