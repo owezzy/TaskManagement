@@ -18,3 +18,33 @@ export const UNITS: TimeUnit[] = [
     milliseconds: 60 * 1000
   }
 ];
+
+export function parseDuration(formattedDuration: string): number {
+  const pattern = /[\d\.]+\s*[wdhm]/g;
+  let timeSpan = 0;
+  let result;
+
+  // tslint:disable-next-line:no-conditional-assignment
+  while (result = pattern.exec(formattedDuration)) {
+    const chuck = result[0].replace(/\s/g, '');
+    const amount = Number(chuck.slice(0, -1));
+    const unitShortName = chuck.slice(-1);
+    timeSpan += amount * UNITS.find((unit) => unit.short === unitShortName).milliseconds;
+  }
+  return timeSpan || null;
+}
+
+
+export function formatDuration(timeSpan: number): string {
+  return UNITS.reduce((str, unit) => {
+    const amount = timeSpan / unit.milliseconds;
+    if (amount >= 1) {
+      const fullUnits = Math.floor(amount);
+      const formatted = `${str} ${fullUnits} ${unit.short}`;
+      timeSpan -= fullUnits * unit.milliseconds;
+      return formatted;
+    } else {
+      return str;
+    }
+  }, '').trim();
+}
