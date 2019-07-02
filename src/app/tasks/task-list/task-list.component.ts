@@ -14,6 +14,8 @@ export class TaskListComponent {
   @Output() outAddTask = new EventEmitter<string>();
   @Output() outActiveFilterType = new EventEmitter<TaskListFilterType>();
   @Output() outUpdateTask = new EventEmitter<Task>();
+  @Output() outDeleteTask = new EventEmitter<Task>();
+  @Output() outShowDetails = new EventEmitter<Task>();
 
   addTask(title: string) {
     this.outAddTask.emit(title);
@@ -25,6 +27,14 @@ export class TaskListComponent {
 
   updateTask(task: Task) {
     this.outUpdateTask.emit(task);
+  }
+
+  deleteTask(task: Task) {
+    this.outDeleteTask.emit(task);
+  }
+
+  showDetails(task: Task) {
+    this.outShowDetails.emit(task);
   }
 
   dropTask(target: Task, source: Task) {
