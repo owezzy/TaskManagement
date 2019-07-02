@@ -1,25 +1,38 @@
 import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {combineLatest, Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {Project, Tag} from '../model';
+import {Project, Tag, Task} from '../model';
 import {ProjectService} from '../project/project.service';
 import {limitWithEllipsis, replaceAll} from '../utilities/string-utilities';
+import {TaskService} from '../tasks/task.service';
 
 @Injectable()
 export class TagsService {
   tags: Observable<Tag[]>;
 
-  constructor(private projectService: ProjectService) {
-    this.tags = this.projectService.getProjects()
-      .pipe(
-        map((projects: Project[]) => projects.map(project => ({
-          type: 'project',
-          hashTag: `#project-${project.id}`,
-          title: limitWithEllipsis(project.title, 20),
-          link: `/projects/${project.id}/tasks`
-        })))
-      );
+  constructor(private projectService: ProjectService, private taskService: TaskService) {
+    this.tags = combineLatest(
+      this.projectService.getProjects()
+        .pipe(
+          map((projects: Project[]) => projects.map(project => ({
+            type: 'project',
+            hashTag: `#project-${project.id}`,
+            title: limitWithEllipsis(project.title, 20),
+            link: `/projects/${project.id}/tasks`
+          })))
+        ),
+      this.taskService.getTasks().pipe(
+        map((tasks: Task[]) => tasks.map((task => ({
+          type: 'task',
+          hashTag: `#task-${task.id}`,
+          title: `${limitWithEllipsis(task.title, 20)} (${task.done ? 'done' : 'open'})`,
+          link: `projects/${task.projectId}/tasks/${task.id}`
+        }))))
+      )
+    ).pipe(
+      map(([projectTags, taskTags]) => [...projectTags, ...taskTags])
+    );
   }
 
   parse(textContent: string): Observable<string> {
