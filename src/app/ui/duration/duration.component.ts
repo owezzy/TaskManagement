@@ -1,16 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {EventEmitter, ChangeDetectionStrategy, Component, Input, Output, ViewEncapsulation} from '@angular/core';
+import {parseDuration} from '../../utilities/time-utilities';
 
 @Component({
   selector: 'app-duration',
   templateUrl: './duration.component.html',
   styleUrls: ['./duration.component.css'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DurationComponent implements OnInit {
+export class DurationComponent {
 
-  constructor() { }
+  @Input() duration: number;
+  @Output() outDurationChange = new EventEmitter<number>();
 
-  ngOnInit() {
+  editSaved(formattedDuration: string) {
+    this.outDurationChange.emit(parseDuration(formattedDuration));
   }
 
 }
