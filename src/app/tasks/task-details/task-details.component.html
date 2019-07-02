@@ -1,0 +1,18 @@
+<h3 class="title">
+  Task Details of task #{{task.id}}
+</h3>
+<div class="content">
+  <div class="label">Title</div>
+  <app-editor
+    [content]="task.title"
+    [showControls]="true"
+    (outSaveEdit)="updateTitle($event)">
+  </app-editor>
+  <div class="label">Description</div>
+  <app-editor
+    [content]="task.description"
+    [showControls]="true"
+    (outSaveEdit)="updateDescription($event)">
+  </app-editor>
+</div>
+
