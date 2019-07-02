@@ -88,3 +88,13 @@ export interface TagSelection {
 }
 
 export type DraggableType = 'task';
+
+export interface TimeUnit {
+  short: string;
+  milliseconds: number;
+}
+
+export interface TimeEfforts {
+  estimated: number;
+  effective: number;
+}
