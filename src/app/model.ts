@@ -2,6 +2,7 @@ export interface Task {
   readonly id?: number;
   readonly projectId?: number;
   readonly title: string;
+  readonly  description?: string;
   readonly done: boolean;
   readonly order: number;
 }

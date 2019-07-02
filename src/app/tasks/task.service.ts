@@ -32,6 +32,12 @@ export class TaskService {
       .subscribe(() => this.loadTasks());
   }
 
+  deleteTask(id: number) {
+    return this.http
+      .delete(`/api/tasks/${id}`)
+      .subscribe(() => this.loadTasks());
+  }
+
   getProjectTasks(projectId: number) {
     return this.tasks
       .asObservable()
