@@ -8,34 +8,44 @@ import { By } from '@angular/platform-browser';
 // import 'rxjs/add/observable/throw';
 
 import {Component, Directive} from '@angular/core';
-import {ProjectActivitiesContainerComponent} from './project-activities-container.component';
+import {ProjectCommentsContainerComponent} from './project-comments-container.component';
 import {ProjectService} from '../../project/project.service';
-import {ActivitiesService} from '../../activities/activites.service';
+import {UserService} from '../../user/user.service';
 import {ActivatedRoute} from '@angular/router';
+import {ActivitiesService} from '../../activities/activites.service';
+import {TagsService} from '../../tags/tags.service';
 
 @Injectable()
 class MockProjectService { }
 
 @Injectable()
+class MockUserService { }
+
+@Injectable()
 class MockActivitiesService { }
 
-describe('ProjectActivitiesContainerComponent', () => {
+@Injectable()
+class MockTagsService { }
+
+describe('ProjectCommentsContainerComponent', () => {
   let fixture;
   let component;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ProjectActivitiesContainerComponent
+        ProjectCommentsContainerComponent
       ],
       providers: [
         {provide: ProjectService, useClass: MockProjectService},
-        {provide: ActivitiesService, useClass: MockActivitiesService},
+        {provide: UserService, useClass: MockUserService},
         ActivatedRoute,
+        {provide: ActivitiesService, useClass: MockActivitiesService},
+        {provide: TagsService, useClass: MockTagsService},
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
-    fixture = TestBed.createComponent(ProjectActivitiesContainerComponent);
+    fixture = TestBed.createComponent(ProjectCommentsContainerComponent);
     component = fixture.debugElement.componentInstance;
   });
 
@@ -43,8 +53,12 @@ describe('ProjectActivitiesContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should run #selectionChange()', async () => {
-    // const result = component.selectionChange(selection);
+  it('should run #createComment()', async () => {
+    // const result = component.createComment(comment);
+  });
+
+  it('should run #updateComment()', async () => {
+    // const result = component.updateComment(update);
   });
 
 });

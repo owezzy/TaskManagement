@@ -8,34 +8,22 @@ import { By } from '@angular/platform-browser';
 // import 'rxjs/add/observable/throw';
 
 import {Component, Directive} from '@angular/core';
-import {ProjectActivitiesContainerComponent} from './project-activities-container.component';
-import {ProjectService} from '../../project/project.service';
-import {ActivitiesService} from '../../activities/activites.service';
-import {ActivatedRoute} from '@angular/router';
+import {CommentComponent} from './comment.component';
 
-@Injectable()
-class MockProjectService { }
-
-@Injectable()
-class MockActivitiesService { }
-
-describe('ProjectActivitiesContainerComponent', () => {
+describe('CommentComponent', () => {
   let fixture;
   let component;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        ProjectActivitiesContainerComponent
+        CommentComponent
       ],
       providers: [
-        {provide: ProjectService, useClass: MockProjectService},
-        {provide: ActivitiesService, useClass: MockActivitiesService},
-        ActivatedRoute,
       ],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
-    fixture = TestBed.createComponent(ProjectActivitiesContainerComponent);
+    fixture = TestBed.createComponent(CommentComponent);
     component = fixture.debugElement.componentInstance;
   });
 
@@ -43,8 +31,8 @@ describe('ProjectActivitiesContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should run #selectionChange()', async () => {
-    // const result = component.selectionChange(selection);
+  it('should run #updateComment()', async () => {
+    // const result = component.updateComment(content);
   });
 
 });

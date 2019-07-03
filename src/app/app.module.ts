@@ -22,7 +22,7 @@ import {NavigationSectionComponent} from './ui/navigation-section/navigation-sec
 import {NavigationComponent} from './ui/navigation/navigation.component';
 import {EditorComponent} from './ui/editor/editor.component';
 import {ProfilePictureComponent} from './user/profile-picture/profile-picture.component';
-import {UserAreaComponent} from './user/user-area/user-area/user-area.component';
+import {UserAreaComponent} from './user/user-area/user-area.component';
 import {FromNowPipe} from './pipes/from-now.pipe';
 import {CommentComponent} from './comments/comment/comment.component';
 import {CommentsComponent} from './comments/comments/comments.component';
@@ -42,6 +42,12 @@ import { TagsSelectComponent } from './tags/tags-select/tags-select.component';
 import {TagsService} from './tags/tags.service';
 import { DraggableDirective } from './draggable/draggable.directive';
 import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.directive';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { TaskDetailsContainerComponent } from './container/task-details-container/task-details-container.component';
+import { FormatDurationPipe } from './pipes/format-duration.pipe';
+import { DurationComponent } from './ui/duration/duration.component';
+import { EffortsComponent } from './efforts/efforts/efforts.component';
+import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-timeline.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +80,13 @@ import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.dire
     TagsInputDirective,
     TagsSelectComponent,
     DraggableDirective,
-    DraggableDropZoneDirective
+    DraggableDropZoneDirective,
+    TaskDetailsComponent,
+    TaskDetailsContainerComponent,
+    FormatDurationPipe,
+    DurationComponent,
+    EffortsComponent,
+    EffortsTimelineComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TaskManagment": {
+    "TaskManagement": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TaskManagment",
+            "outputPath": "dist/TaskManagement",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TaskManagment:build"
+            "browserTarget": "TaskManagement:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "TaskManagment:build:production"
+              "browserTarget": "TaskManagement:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TaskManagment:build"
+            "browserTarget": "TaskManagement:build"
           }
         },
         "lint": {
@@ -89,16 +89,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TaskManagment:serve"
+            "devServerTarget": "TaskManagement:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TaskManagment:serve:production"
+              "devServerTarget": "TaskManagement:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "TaskManagment"
+  "defaultProject": "TaskManagement"
 }

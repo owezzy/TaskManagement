@@ -4,6 +4,8 @@
   [activeTaskFilterType]="activeTaskFilterType | async"
 
   (outUpdateTask)="updateTask($event)"
+  (outDeleteTask)="deleteTask($event)"
+  (outShowDetails)="showDetails($event)"
   (outActiveFilterType)="activateFilterType($event)"
   (outAddTask)="addTask($event)">
 

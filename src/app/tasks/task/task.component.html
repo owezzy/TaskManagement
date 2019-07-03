@@ -1,8 +1,13 @@
 <app-checkbox [checked]="task.done"
-              (outCheck)="updateTask($event)"></app-checkbox>
-<div class="title">
-  <app-editor [content]="task.title"
-              [showControls]="true"
-              (outSaveEdit)="updateTitle($event)">
-  </app-editor>
+              (outCheck)="updateTask($event)">
+</app-checkbox>
+<div class="content">
+  <div class="title">
+    <app-editor [content]="task.title"
+                [showControls]="true"
+                (outSaveEdit)="updateTitle($event)">
+    </app-editor>
+  </div>
+  <button class="button button-small" (click)="showDetails()"></button>
+  <button class="delete" (click)="deleteTask()"></button>
 </div>

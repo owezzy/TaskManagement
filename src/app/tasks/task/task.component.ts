@@ -12,6 +12,8 @@ import {Task} from 'src/app/model';
 export class TaskComponent {
   @Input() task: Task;
   @Output() outUpdateTask = new EventEmitter<Task>();
+  @Output() outShowDetails = new EventEmitter();
+  @Output() outDeleteTask = new EventEmitter();
 
   @HostBinding('class.done')
   get done() {
@@ -30,5 +32,13 @@ export class TaskComponent {
       ...this.task,
       title
     });
+  }
+
+  deleteTask() {
+    this.outDeleteTask.emit(this.task);
+  }
+
+  showDetails() {
+    this.outShowDetails.emit(this.task);
   }
 }
