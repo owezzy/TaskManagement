@@ -24,11 +24,12 @@ export class TaskListContainerComponent {
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
-  constructor(private taskService: TaskService,
-              private projectService: ProjectService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private activitiesService: ActivitiesService) {
+  constructor(
+    private taskService: TaskService,
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private activitiesService: ActivitiesService) {
     this.selectedProject = combineLatest(
       this.projectService.getProjects(),
       route.parent.params

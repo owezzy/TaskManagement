@@ -14,5 +14,10 @@
     [showControls]="true"
     (outSaveEdit)="updateDescription($event)">
   </app-editor>
+  <div class="label">Efforts</div>
+  <app-efforts
+    [efforts]="task.efforts"
+    (outEffortsChange)="updateEfforts($event)">
+  </app-efforts>
 </div>
 

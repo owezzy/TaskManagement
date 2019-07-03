@@ -13,7 +13,7 @@ export const routes: Route[] = [
     canActivate: [ProjectContainerGuard],
     children: [
       {path: 'tasks', component: TaskListContainerComponent},
-      {path: 'task/:taskId', component: TaskDetailsContainerComponent},
+      {path: 'tasks/:taskId', component: TaskDetailsContainerComponent},
       {path: 'comments', component: ProjectCommentsContainerComponent},
       {path: 'activities', component: ProjectActivitiesContainerComponent},
       {path: '**', redirectTo: 'tasks'},

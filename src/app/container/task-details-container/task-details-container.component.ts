@@ -20,10 +20,10 @@ export class TaskDetailsContainerComponent {
   task: Observable<Task>;
   tags: Observable<Tag[]>;
 
-  constructor(private taskService: TaskService,
-              private tagsService: TagsService,
-              private route: ActivatedRoute
-  ) {
+  constructor(
+    private taskService: TaskService,
+    private tagsService: TagsService,
+    private route: ActivatedRoute ) {
     this.task = combineLatest(
       this.taskService.getTasks(),
       route.params).pipe(

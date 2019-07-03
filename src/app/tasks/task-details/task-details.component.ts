@@ -1,5 +1,5 @@
 import {Component, ChangeDetectionStrategy, Input, EventEmitter, Output} from '@angular/core';
-import {Tag, Task} from '../../model';
+import {Tag, Task, TimeEfforts} from '../../model';
 
 @Component({
   selector: 'app-task-details',
@@ -23,6 +23,13 @@ export class TaskDetailsComponent {
     this.outUpdateTask.emit({
       ...this.task,
       description
+    });
+  }
+
+  updateEfforts(efforts: TimeEfforts) {
+    this.outUpdateTask.emit({
+      ...this.task,
+      efforts
     });
   }
 }
