@@ -1,3 +1,16 @@
-<p>
-  efforts works!
-</p>
+<div class="label"> Estimated:</div>
+<app-duration
+  [duration]="efforts?.estimated"
+  (outDurationChange)="estimatedChange($event)">
+</app-duration>
+<div class="label">Effective:</div>
+<app-duration
+  [duration]="efforts?.effective"
+  (outDurationChange)="effectiveChange($event)">
+</app-duration>
+<button class="button-small"
+        (click)="addEffectiveHours(1)">+1h</button>
+<button class="button-small"
+        (click)="addEffectiveHours(4)">+4h</button>
+<button class="button-small"
+        (click)="addEffectiveHours(8)">+1d</button>
