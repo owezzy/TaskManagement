@@ -99,3 +99,10 @@ export interface TimeEfforts {
   estimated: number;
   effective: number;
 }
+
+export interface ProjectSummary {
+  project: Project;
+  description: string;
+  task: Task[];
+  activities: ProjectActivity[];
+}
