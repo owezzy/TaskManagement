@@ -14,3 +14,8 @@
         (click)="addEffectiveHours(4)">+4h</button>
 <button class="button-small"
         (click)="addEffectiveHours(8)">+1d</button>
+
+<app-efforts-timeline
+  *ngIf="efforts"
+  [efforts]="efforts">
+</app-efforts-timeline>
