@@ -47,6 +47,7 @@ import { TaskDetailsContainerComponent } from './container/task-details-containe
 import { FormatDurationPipe } from './pipes/format-duration.pipe';
 import { DurationComponent } from './ui/duration/duration.component';
 import { EffortsComponent } from './efforts/efforts/efforts.component';
+import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-timeline.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { EffortsComponent } from './efforts/efforts/efforts.component';
     TaskDetailsContainerComponent,
     FormatDurationPipe,
     DurationComponent,
-    EffortsComponent
+    EffortsComponent,
+    EffortsTimelineComponent
   ],
   imports: [
     BrowserModule,
