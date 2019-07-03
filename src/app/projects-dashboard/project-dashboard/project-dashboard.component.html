@@ -1,0 +1,12 @@
+<header class="dashboard-header">
+  <h2 class="dashboard-title">DashBoard</h2>
+</header>
+<div class="dashboard-main">
+  <h3 class="dashboard-sub-title">Projects</h3>
+  <ul class="dashboard-list">
+    <li *ngFor="let projectSummary of projectSummaries" class="dashboard-list-item">
+      <strong>projectSummary.project.title</strong>
+      <p>projectSummary.description</p>
+    </li>
+  </ul>
+</div>
