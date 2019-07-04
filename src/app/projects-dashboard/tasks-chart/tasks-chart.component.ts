@@ -15,6 +15,11 @@ import {rasterize} from '../../utilities/time-utilities';
 import * as Chartist from 'chartist';
 import * as moment from 'moment';
 
+export interface ChartLegendItem {
+  title: string;
+  class: string;
+}
+
 @Component({
   selector: 'app-tasks-chart',
   templateUrl: './tasks-chart.component.html',
@@ -28,8 +33,15 @@ export class TasksChartComponent implements OnChanges, AfterViewInit {
   @ViewChild('chartContainer', {static: true}) chartContainer: ElementRef;
 
   chart: IChartistLineChart;
+  legend: ChartLegendItem[];
 
   ngOnChanges(changes: SimpleChanges) {
+    if (changes.projectSummaries && this.projectSummaries) {
+      this.legend = this.projectSummaries.map((projectSummary, index) => ({
+        title: projectSummary.project.title,
+        class: `series-${index + 1}`
+      }));
+    }
     this.createOrUpdateChart();
   }
 
