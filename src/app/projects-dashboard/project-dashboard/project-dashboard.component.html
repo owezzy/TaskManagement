@@ -5,8 +5,10 @@
   <h3 class="dashboard-sub-title">Projects</h3>
   <ul class="dashboard-list">
     <li *ngFor="let projectSummary of projectSummaries" class="dashboard-list-item">
-      <strong>projectSummary.project.title</strong>
-      <p>projectSummary.description</p>
+      <app-project-summary
+        [projectSummary]="projectSummary"
+        (click)="activateProject(projectSummary.project)">
+      </app-project-summary>
     </li>
   </ul>
 </div>
