@@ -20,6 +20,12 @@ export interface ChartLegendItem {
   class: string;
 }
 
+export interface ChartTimeFrame {
+  name: string;
+  timeFrame: number;
+  amount: number;
+}
+
 @Component({
   selector: 'app-tasks-chart',
   templateUrl: './tasks-chart.component.html',
@@ -34,6 +40,22 @@ export class TasksChartComponent implements OnChanges, AfterViewInit {
 
   chart: IChartistLineChart;
   legend: ChartLegendItem[];
+  timeFrames: ChartTimeFrame[] = [{
+    name: 'day',
+    timeFrame: 600000,
+    amount: 144
+  }, {
+    name: 'week',
+    timeFrame: 3600000,
+    amount: 168
+  }, {
+    name: 'year',
+    timeFrame: 86400000,
+    amount: 360
+  }];
+
+  timeFrameNames = this.timeFrames.map((timeFrame) => timeFrame.name);
+  selectedTimeFrame = this.timeFrames[0];
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.projectSummaries && this.projectSummaries) {
@@ -46,6 +68,11 @@ export class TasksChartComponent implements OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.createOrUpdateChart();
+  }
+
+  selectTimeFrame(timeFrameName: string) {
+    this.selectedTimeFrame = this.timeFrames.find((timeFrame) => timeFrame.name === timeFrameName);
     this.createOrUpdateChart();
   }
 
@@ -82,11 +109,11 @@ export class TasksChartComponent implements OnChanges, AfterViewInit {
           return data;
         }, []);
 
-        return rasterize(timeData, 600000, 144, now, null, true);
+        return rasterize(timeData, this.selectedTimeFrame.timeFrame, this.selectedTimeFrame.amount, now, null, true);
       }),
       labels: Array.from({
-        length: 144
-      }).map((e, index) => now - index * 600000).reverse()
+        length: this.selectedTimeFrame.amount
+      }).map((e, index) => now - index * this.selectedTimeFrame.timeFrame).reverse()
     };
   }
 
