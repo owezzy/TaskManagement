@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
-import {ProjectSummary} from '../../model';
+import {Project, ProjectSummary} from '../../model';
 import {ProjectService} from '../../project/project.service';
 import {TaskService} from '../../tasks/task.service';
 import {ActivitiesService} from '../../activities/activites.service';
@@ -40,4 +40,7 @@ export class ProjectsDashboardContainerComponent {
     );
   }
 
+  activateProject(project: Project) {
+    this.router.navigate(['/projects', project.id]);
+  }
 }
