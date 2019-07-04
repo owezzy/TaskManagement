@@ -5,8 +5,10 @@ import {ProjectCommentsContainerComponent} from './container/project-comments-co
 import {ProjectContainerGuard} from './guards/project-container.guard';
 import {ProjectActivitiesContainerComponent} from './container/project-activities-container/project-activities-container.component';
 import {TaskDetailsContainerComponent} from './container/task-details-container/task-details-container.component';
+import {ProjectsDashboardContainerComponent} from './container/projects-dashboard-container/projects-dashboard-container.component';
 
 export const routes: Route[] = [
+  {path: 'dashboard', component: ProjectsDashboardContainerComponent},
   {
     path: 'projects/:projectId',
     component: ProjectContainerComponent,
@@ -19,5 +21,5 @@ export const routes: Route[] = [
       {path: '**', redirectTo: 'tasks'},
     ]
   },
-  {path: '', pathMatch: 'full', redirectTo: '/projects/1'}
+  {path: '', pathMatch: 'full', redirectTo: '/dashboard'}
 ];
