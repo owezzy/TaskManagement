@@ -1,3 +1,7 @@
-<p>
-  project-summary works!
-</p>
+<div class="summary-title">{{projectSummary.project.title}}</div>
+<div class="summary-description">
+  {{projectSummary.description}}
+</div>
+<div class="summary-label">Total Effort</div>
+<app-efforts-timeline [efforts]="totalEfforts"></app-efforts-timeline>
+<p>{{totalEfforts | formatEfforts}}</p>
