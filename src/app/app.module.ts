@@ -48,6 +48,12 @@ import { FormatDurationPipe } from './pipes/format-duration.pipe';
 import { DurationComponent } from './ui/duration/duration.component';
 import { EffortsComponent } from './efforts/efforts/efforts.component';
 import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-timeline.component';
+import { ProjectDashboardComponent } from './projects-dashboard/project-dashboard/project-dashboard.component';
+import { ProjectSummaryComponent } from './projects-dashboard/project-summary/project-summary.component';
+import { FormatEffortPipe } from './pipes/format-effort.pipe';
+import { ProjectsDashboardContainerComponent } from './container/projects-dashboard-container/projects-dashboard-container.component';
+import { ActivityChartComponent } from './projects-dashboard/activity-chart/activity-chart.component';
+import { TasksChartComponent } from './projects-dashboard/tasks-chart/tasks-chart.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +92,13 @@ import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-tim
     FormatDurationPipe,
     DurationComponent,
     EffortsComponent,
-    EffortsTimelineComponent
+    EffortsTimelineComponent,
+    ProjectDashboardComponent,
+    ProjectSummaryComponent,
+    FormatEffortPipe,
+    ProjectsDashboardContainerComponent,
+    ActivityChartComponent,
+    TasksChartComponent
   ],
   imports: [
     BrowserModule,

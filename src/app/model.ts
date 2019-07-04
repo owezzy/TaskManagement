@@ -5,6 +5,8 @@ export interface Task {
   readonly  description?: string;
   readonly done: boolean;
   readonly order: number;
+  readonly created: number;
+  readonly completed?: number;
   readonly efforts?: TimeEfforts;
 }
 
@@ -98,4 +100,16 @@ export interface TimeUnit {
 export interface TimeEfforts {
   estimated: number;
   effective: number;
+}
+
+export interface ProjectSummary {
+  project: Project;
+  description: string;
+  tasks: Task[];
+  activities: ProjectActivity[];
+}
+
+export interface RasterizationData {
+  time: number;
+  weight: number;
 }

@@ -1,8 +1,17 @@
 <aside class="side-nav">
   <app-user-area [user]="user | async"
-                 [openTasksCount]="openTaskCount| async" >
+                 [openTasksCount]="openTaskCount| async">
   </app-user-area>
   <app-navigation>
+    <app-navigation-section title="Main">
+      <app-navigation-item
+        title="Dashboard"
+        navId="dashboard"
+        routerLinkActive="active"
+        [routerLink]="['/dashboard']">
+      </app-navigation-item>
+    </app-navigation-section>
+
     <app-navigation-section title="Projects">
       <app-navigation-item *ngFor="let project of projects | async"
                            [navId]="project.id"

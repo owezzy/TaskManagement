@@ -1,0 +1,18 @@
+<header class="dashboard-header">
+  <h2 class="dashboard-title">DashBoard</h2>
+</header>
+<div class="dashboard-main">
+  <h3 class="dashboard-sub-title">Tasks Overview</h3>
+  <div class="dashboard-tasks">
+    <app-tasks-chart [projectSummaries]="projectSummaries"></app-tasks-chart>
+  </div>
+  <h3 class="dashboard-sub-title">Projects</h3>
+  <ul class="dashboard-list">
+    <li *ngFor="let projectSummary of projectSummaries" class="dashboard-list-item">
+      <app-project-summary
+        [projectSummary]="projectSummary"
+        (click)="activateProject(projectSummary.project)">
+      </app-project-summary>
+    </li>
+  </ul>
+</div>
