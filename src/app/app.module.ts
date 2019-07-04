@@ -53,6 +53,7 @@ import { ProjectSummaryComponent } from './projects-dashboard/project-summary/pr
 import { FormatEffortPipe } from './pipes/format-effort.pipe';
 import { ProjectsDashboardContainerComponent } from './container/projects-dashboard-container/projects-dashboard-container.component';
 import { ActivityChartComponent } from './projects-dashboard/activity-chart/activity-chart.component';
+import { TasksChartComponent } from './projects-dashboard/tasks-chart/tasks-chart.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { ActivityChartComponent } from './projects-dashboard/activity-chart/acti
     ProjectSummaryComponent,
     FormatEffortPipe,
     ProjectsDashboardContainerComponent,
-    ActivityChartComponent
+    ActivityChartComponent,
+    TasksChartComponent
   ],
   imports: [
     BrowserModule,
