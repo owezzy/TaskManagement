@@ -5,6 +5,8 @@ export interface Task {
   readonly  description?: string;
   readonly done: boolean;
   readonly order: number;
+  readonly created: number;
+  readonly completed?: number;
   readonly efforts?: TimeEfforts;
 }
 
