@@ -1,2 +1,8 @@
-<div #chartContainer class="chart-container">
-</div>
+<ul class="series-list">
+  <li
+    *ngFor="let series of legend"
+    class="series {{series.class}}"
+  >{{series.title}}
+  </li>
+</ul>
+<div #chartContainer class="chart-container"></div>
