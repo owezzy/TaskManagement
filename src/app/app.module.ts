@@ -51,6 +51,7 @@ import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-tim
 import { ProjectDashboardComponent } from './projects-dashboard/project-dashboard/project-dashboard.component';
 import { ProjectSummaryComponent } from './projects-dashboard/project-summary/project-summary.component';
 import { FormatEffortPipe } from './pipes/format-effort.pipe';
+import { ProjectsDashboardContainerComponent } from './container/projects-dashboard-container/projects-dashboard-container.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { FormatEffortPipe } from './pipes/format-effort.pipe';
     EffortsTimelineComponent,
     ProjectDashboardComponent,
     ProjectSummaryComponent,
-    FormatEffortPipe
+    FormatEffortPipe,
+    ProjectsDashboardContainerComponent
   ],
   imports: [
     BrowserModule,
