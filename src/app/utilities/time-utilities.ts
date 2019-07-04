@@ -54,14 +54,21 @@ export function rasterize(
   timeFrame: number,
   quantity: number,
   now: number = +new Date(),
-  fill: number = 0): number[] {
+  fill: number = 0,
+  accumulate: boolean = false): number[] {
 
   now = Math.floor(now / timeFrame) * timeFrame;
+  let accumulatedValue = 0;
+
+  if (accumulate) {
+    timeData = timeData.slice().sort((a, b) => a.time < b.time ? -1 : a.time > b.time ? 1 : 0);
+  }
 
   return timeData.reduce((rasterized: number[], data: RasterizationData) => {
+    accumulatedValue += data.weight;
     const index = Math.ceil((now - data.time) / timeFrame);
     if (index < quantity) {
-      rasterized[index] = (rasterized[index] || 0) + data.weight;
+      rasterized[index] = accumulate ? accumulatedValue : (rasterized[index] || 0) + data.weight;
     }
     return rasterized;
   }, Array.from({length: quantity}).fill(fill) as number[]).reverse();

@@ -23,7 +23,8 @@ export class TaskComponent {
   updateTask(done: boolean) {
     this.outUpdateTask.emit({
       ...this.task,
-      done
+      done,
+      completed: done ? +new Date() : this.task.completed
     });
   }
 
