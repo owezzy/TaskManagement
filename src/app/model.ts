@@ -106,3 +106,8 @@ export interface ProjectSummary {
   tasks: Task[];
   activities: ProjectActivity[];
 }
+
+export interface RasterizationData {
+  time: number;
+  weight: number;
+}

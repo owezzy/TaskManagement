@@ -1,4 +1,4 @@
-import {TimeUnit} from '../model';
+import {RasterizationData, TimeUnit} from '../model';
 
 export const UNITS: TimeUnit[] = [
   {
@@ -47,4 +47,22 @@ export function formatDuration(timeSpan: number): string {
       return str;
     }
   }, '').trim();
+}
+
+export function rasterize(
+  timeData: RasterizationData[],
+  timeFrame: number,
+  quantity: number,
+  now: number = +new Date(),
+  fill: number = 0): number[] {
+
+  now = Math.floor(now / timeFrame) * timeFrame;
+
+  return timeData.reduce((rasterized: number[], data: RasterizationData) => {
+    const index = Math.ceil((now - data.time) / timeFrame);
+    if (index < quantity) {
+      rasterized[index] = (rasterized[index] || 0) + data.weight;
+    }
+    return rasterized;
+  }, Array.from({length: quantity}).fill(fill) as number[]).reverse();
 }
