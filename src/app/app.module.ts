@@ -49,6 +49,7 @@ import { DurationComponent } from './ui/duration/duration.component';
 import { EffortsComponent } from './efforts/efforts/efforts.component';
 import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-timeline.component';
 import { ProjectDashboardComponent } from './projects-dashboard/project-dashboard/project-dashboard.component';
+import { ProjectSummaryComponent } from './projects-dashboard/project-summary/project-summary.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { ProjectDashboardComponent } from './projects-dashboard/project-dashboar
     DurationComponent,
     EffortsComponent,
     EffortsTimelineComponent,
-    ProjectDashboardComponent
+    ProjectDashboardComponent,
+    ProjectSummaryComponent
   ],
   imports: [
     BrowserModule,

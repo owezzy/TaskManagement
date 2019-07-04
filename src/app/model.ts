@@ -103,6 +103,6 @@ export interface TimeEfforts {
 export interface ProjectSummary {
   project: Project;
   description: string;
-  task: Task[];
+  tasks: Task[];
   activities: ProjectActivity[];
 }

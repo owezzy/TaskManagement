@@ -16,6 +16,4 @@ export class ProjectDashboardComponent {
   activateProject(project: Project) {
     this.outActivateProject.emit(project);
   }
-
-
 }
