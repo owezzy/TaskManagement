@@ -2,8 +2,12 @@ export interface Task {
   readonly id?: number;
   readonly projectId?: number;
   readonly title: string;
+  readonly  description?: string;
   readonly done: boolean;
   readonly order: number;
+  readonly created: number;
+  readonly completed?: number;
+  readonly efforts?: TimeEfforts;
 }
 
 
@@ -87,3 +91,25 @@ export interface TagSelection {
 }
 
 export type DraggableType = 'task';
+
+export interface TimeUnit {
+  short: string;
+  milliseconds: number;
+}
+
+export interface TimeEfforts {
+  estimated: number;
+  effective: number;
+}
+
+export interface ProjectSummary {
+  project: Project;
+  description: string;
+  tasks: Task[];
+  activities: ProjectActivity[];
+}
+
+export interface RasterizationData {
+  time: number;
+  weight: number;
+}

@@ -1,0 +1,9 @@
+<div class="summary-title">{{projectSummary.project.title}}</div>
+<div class="summary-description">
+  {{projectSummary.description}}
+</div>
+<div class="summary-label">Total Effort</div>
+<app-efforts-timeline [efforts]="totalEfforts"></app-efforts-timeline>
+<p>{{totalEfforts | formatEfforts}}</p>
+<div class="summary-label">Activity last 24 hours</div>
+<app-activity-chart [activities]="projectSummary.activities"></app-activity-chart>

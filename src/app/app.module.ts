@@ -42,6 +42,18 @@ import { TagsSelectComponent } from './tags/tags-select/tags-select.component';
 import {TagsService} from './tags/tags.service';
 import { DraggableDirective } from './draggable/draggable.directive';
 import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.directive';
+import { TaskDetailsComponent } from './tasks/task-details/task-details.component';
+import { TaskDetailsContainerComponent } from './container/task-details-container/task-details-container.component';
+import { FormatDurationPipe } from './pipes/format-duration.pipe';
+import { DurationComponent } from './ui/duration/duration.component';
+import { EffortsComponent } from './efforts/efforts/efforts.component';
+import { EffortsTimelineComponent } from './efforts/efforts-timeline/efforts-timeline.component';
+import { ProjectDashboardComponent } from './projects-dashboard/project-dashboard/project-dashboard.component';
+import { ProjectSummaryComponent } from './projects-dashboard/project-summary/project-summary.component';
+import { FormatEffortPipe } from './pipes/format-effort.pipe';
+import { ProjectsDashboardContainerComponent } from './container/projects-dashboard-container/projects-dashboard-container.component';
+import { ActivityChartComponent } from './projects-dashboard/activity-chart/activity-chart.component';
+import { TasksChartComponent } from './projects-dashboard/tasks-chart/tasks-chart.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +86,19 @@ import { DraggableDropZoneDirective } from './draggable/draggable-drop-zone.dire
     TagsInputDirective,
     TagsSelectComponent,
     DraggableDirective,
-    DraggableDropZoneDirective
+    DraggableDropZoneDirective,
+    TaskDetailsComponent,
+    TaskDetailsContainerComponent,
+    FormatDurationPipe,
+    DurationComponent,
+    EffortsComponent,
+    EffortsTimelineComponent,
+    ProjectDashboardComponent,
+    ProjectSummaryComponent,
+    FormatEffortPipe,
+    ProjectsDashboardContainerComponent,
+    ActivityChartComponent,
+    TasksChartComponent
   ],
   imports: [
     BrowserModule,

@@ -14,11 +14,12 @@ export class Database implements InMemoryDbService {
       {id: 2, title: 'Second Project', description: 'Project Duex', comments: []},
     ];
 
+    const hour = 3600000;
     const tasks: Task[] = [
-      {id: 1, projectId: 1, title: 'Task 1', done: false, order: 1},
-      {id: 2, projectId: 2, title: 'Task 2', done: true, order: 2},
-      {id: 3, projectId: 1, title: 'Task 3', done: false, order: 3},
-      {id: 4, projectId: 2, title: 'Task 4', done: true, order: 4}
+      {id: 1, projectId: 1, title: 'Task 1', done: false, order: 1, created: +new Date() - hour * 8},
+      {id: 2, projectId: 2, title: 'Task 2', done: true, order: 2, created: +new Date() - hour * 6},
+      {id: 3, projectId: 1, title: 'Task 3', done: false, order: 3, created: +new Date() - hour * 12, completed: +new Date() - hour * 3},
+      {id: 4, projectId: 2, title: 'Task 4', done: true, order: 4, created: +new Date() - hour * 20}
     ];
 
     const now = +new Date();

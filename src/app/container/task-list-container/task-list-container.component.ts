@@ -1,6 +1,6 @@
 import {Component, ViewEncapsulation, ChangeDetectionStrategy} from '@angular/core';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {map, switchMap, take} from 'rxjs/operators';
 
 import {Project, Task, TaskListFilterType} from '../../model';
@@ -24,10 +24,12 @@ export class TaskListContainerComponent {
   taskFilterTypes: TaskListFilterType[] = ['all', 'open', 'done'];
   activeTaskFilterType = new BehaviorSubject<TaskListFilterType>('all');
 
-  constructor(private taskService: TaskService,
-              private projectService: ProjectService,
-              private route: ActivatedRoute,
-              private activitiesService: ActivitiesService) {
+  constructor(
+    private taskService: TaskService,
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private activitiesService: ActivitiesService) {
     this.selectedProject = combineLatest(
       this.projectService.getProjects(),
       route.parent.params
@@ -91,6 +93,16 @@ export class TaskListContainerComponent {
     this.taskService.updateTask(task);
   }
 
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task.id);
+  }
+
+  showDetails(task: Task) {
+    this.selectedProject.pipe(take(1))
+      .subscribe(selectedProject => {
+        this.router.navigate(['/projects', selectedProject.id, 'tasks', task.id]);
+      });
+  }
 }
 
 
