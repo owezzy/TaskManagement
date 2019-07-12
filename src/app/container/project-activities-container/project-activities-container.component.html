@@ -1,0 +1,4 @@
+<app-activities [activities]="activities | async"
+                [selectedActivities]="selectedActivities | async"
+                (outSelectionChange)="selectionChange($event)">
+</app-activities>

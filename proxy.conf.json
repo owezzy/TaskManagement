@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "http://weloveiconfonts.com/api/fonts/entypo/entypo.ttf",
+    "secure": false,
+    "changeOrigin": true
+  }
+}
+

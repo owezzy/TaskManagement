@@ -1,0 +1,17 @@
+<header class="header">
+  <h2 class="title">
+    <app-editor [content]="project.title"
+                [showControls]="true"
+                (outSaveEdit)="updateTitle($event)">
+    </app-editor>
+  </h2>
+  <app-editor [content]="project.description"
+              [showControls]="true"
+              (outSaveEdit)="updateDescription($event)">
+  </app-editor>
+</header>
+<app-tabs [tabs]="tabs"
+          [activeTab]="activeTab"
+          (outActivateTab)="activateTab($event)">
+</app-tabs>
+<router-outlet></router-outlet>

@@ -1,0 +1,19 @@
+<app-toggle [buttonList]="taskFilterTypes"
+            [activeButton]="activeTaskFilterType "
+            (outActivate)="activateFilterType($event)">
+</app-toggle>
+<app-enter-task (outEnterTask)="addTask($event)"></app-enter-task>
+<div class="tasks">
+  <app-task *ngFor="let task of tasks"
+            [task]="task"
+            (outUpdateTask)="updateTask($event)"
+            (outDeleteTask)="deleteTask($event)"
+            (outShowDetails)="showDetails($event)"
+            appDraggable
+            draggableType="task"
+            [draggableData]="task"
+            appDraggableDropZone
+            dropAcceptType="task"
+            (outDropDraggable)="dropTask(task, $event)">
+  </app-task>
+</div>

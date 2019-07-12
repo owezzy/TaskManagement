@@ -1,0 +1,5 @@
+<app-task-details
+  [task]="task | async"
+  [tags]="tags | async"
+  (outUpdateTask)="updateTask($event)">
+</app-task-details>

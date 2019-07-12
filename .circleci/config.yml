@@ -1,0 +1,28 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/TaskManagment
+    docker:
+      - image: circleci/node:7.10
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: angular-build
+          command: npm ng -- build
+      - run:
+          name: angular-test
+          command: npm test:cov
+      - store_artifacts:
+          path: test-results.xml
+          prefix: tests
+
+

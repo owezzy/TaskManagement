@@ -1,0 +1,6 @@
+<app-comments [user]="user | async"
+              [comments]="projectComments | async"
+              [tags]="tags | async"
+              (outCreateComment)="createComment($event)"
+              (outUpdateComment)="updateComment($event)">
+</app-comments>
