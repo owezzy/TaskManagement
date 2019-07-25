@@ -21,6 +21,12 @@ jobs:
       - run:
           name: angular-test
           command: npm test-cov
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+            - run:
+                name: Publish package
+                command: npm publish
       - store_artifacts:
           path: test-results.xml
           prefix: tests
@@ -28,15 +34,5 @@ jobs:
           root: ~/repo
           paths: .
 
-  deploy:
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Publish package
-          command: npm publish
 
 
