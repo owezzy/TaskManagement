@@ -1,4 +1,6 @@
 # TaskManagment
+>
+>[![CircleCI](https://circleci.com/gh/owezzy/TaskManagement.svg?style=svg)](https://circleci.com/gh/owezzy/TaskManagement)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
