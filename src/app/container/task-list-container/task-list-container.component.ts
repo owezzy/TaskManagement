@@ -76,7 +76,8 @@ export class TaskListContainerComponent {
         projectId: project.id,
         title,
         done: false,
-        order: position
+        order: position,
+        created: +new Date()
       };
       this.taskService.addTask(task);
       this.activitiesService.logProjectActivity(
